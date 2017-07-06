@@ -7,9 +7,9 @@ export default class Search extends React.Component{
 
         super(props);
 
-        if (this.props.params && this.props.params.searchquery){
+        if (props.match.params && props.match.params.searchquery){
 
-            console.log(this.props.params.searchquery);
+            console.log(props.match.params.searchquery);
 
         }
 

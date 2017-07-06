@@ -14,7 +14,7 @@ export default class RoutesList extends React.Component{
             <div className="page-content">
 
                 <Route exact path="/" component={Home}></Route>
-                <Route path="/search" component={Search}></Route>
+                <Route exact path="/search" component={Search}></Route>
                 <Route path="/search/:searchquery" component={Search}></Route>
 
                 <div className="clearfix"></div>
