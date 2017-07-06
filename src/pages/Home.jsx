@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {config} from '../config.js';
 import LinkClient from '../lib/LinkClient';
@@ -97,9 +98,7 @@ export default class Home extends React.Component {
 
         this.getStats();
 
-        this._difficultyChart = this.refs.difficultyChart.chart_instance; // Get ref to difficulty chart
-
-        // Poll the node for new data. TODO: This can be done with a callback.
+        // Poll the node for new data. TODO: Do this with a callback.
         this.timer = setInterval(
             () => {
 

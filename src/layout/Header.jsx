@@ -2,14 +2,32 @@ import React from 'react';
 
 export default class Header extends React.Component {
 
+    constructor(props){
+
+        super(props);
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.state = { searchQuery : '' };
+
+    }
+
+    handleInputChange(event) {
+
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+
+    }
+
     doSearch(ev){
 
-        console.log(ev);
         ev.preventDefault();
 
-        alert('hello');
 
-        return false;
     }
 
     render() {
@@ -27,7 +45,13 @@ export default class Header extends React.Component {
 
                     <form className="item-search" onSubmit={this.doSearch}>
 
-                        <input type="text" className="form-control" placeholder="Search account / txn / block" />
+                        <input
+                            onChange={this.handleInputChange}
+                            value={this.state.searchQuery}
+                            name="searchQuery"
+                            type="text"
+                            className="form-control"
+                            placeholder="Search account / txn / block" />
 
                     </form>
 
