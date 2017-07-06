@@ -16,7 +16,6 @@ body{
 
     display: flex;
     flex-direction: row;
-
     background: white;
 
     .header-block-left{
@@ -25,7 +24,7 @@ body{
       background: @yellow-0;
       color: black;
       border-bottom: 1px solid @light-grey;
-      padding: 25px 20px;
+      padding: 10px 20px;
 
       i{
         font-size: 1.2em;
@@ -36,13 +35,24 @@ body{
     .header-block-right{
 
       flex: 1;
+      padding: 10px 20px;
       border-bottom: 1px solid @light-grey;
 
       .link-name{
         font-size: 1.3em;
+        color: @dark-grey;
         position: relative;
-        left: 3%;
-        top: 10px;
+        top: 2px;
+      }
+
+      .item-search{
+        float: right;
+        width: 34%;
+        text-align: right;
+
+        input{
+          height: 30px;
+        }
       }
 
     }
