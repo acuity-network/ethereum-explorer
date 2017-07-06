@@ -7,7 +7,7 @@ export default class Footer extends React.Component {
 
             <footer>
 
-                <a target="_blank" href="">
+                <a target="_blank" href="https://github.com/link-blockchain/ethereum-explorer">
                     <span className="logo-bottom">Link Blockchain explorer</span>
                 </a>
 

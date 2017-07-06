@@ -13,6 +13,7 @@ export default class Home extends React.Component {
         super(props);
         this._link = new LinkClient(config.node_uri);
 
+        // Remove grid and labels on charts
         this.chartOptions = {
             legend: {display: false},
             scales: {
@@ -34,7 +35,7 @@ export default class Home extends React.Component {
 
     }
 
-    // Build props object for the difficulty bar chart
+    // Build props object for the difficulty and block time bar charts
     getChartData(systemStats) {
 
         let difficultyData = [];
@@ -98,6 +99,7 @@ export default class Home extends React.Component {
 
         this._difficultyChart = this.refs.difficultyChart.chart_instance; // Get ref to difficulty chart
 
+        // Poll the node for new data. TODO: This can be done with a callback.
         this.timer = setInterval(
             () => {
 
