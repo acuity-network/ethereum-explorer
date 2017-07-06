@@ -1,0 +1,37 @@
+
+// Core library for interactions with the LINK blockchain
+
+import web3 from 'web3';
+import LinkHTTPConnector from './LinkConnector.js';
+import  LinkSystemStats from './LinkSystemStats';
+
+export default class LinkClient {
+
+    constructor(nodeUri){
+
+        if(!nodeUri){
+            throw new Error('No blockchain node specified');
+        }
+
+        this._web3 = LinkHTTPConnector.connect(nodeUri);
+        this._systemStats = new LinkSystemStats(this._web3);
+
+
+    }
+
+    getSystemStats(){
+
+        return {
+            latestBlocks : this._systemStats.getLatestBlocks(),
+            peerCount : this._systemStats.getPeerCount(),
+            difficulty : this._systemStats.getAverageDifficulty(),
+            blockTimes : this._systemStats.getBlockTimes(),
+            gasPrice : this._systemStats.getGasPrice(),
+            hashRate : this._systemStats.getHashRate(),
+            syncing : this._systemStats.getSync()
+        }
+
+    }
+
+
+}
