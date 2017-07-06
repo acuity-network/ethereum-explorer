@@ -33,7 +33,7 @@ export default class LinkSystemStats{
         let blockTimes = [];
 
         // Get individual block times at the same time as we figure out the average
-        const totalTime = this._latestBlocks.reduce(
+        this._totalTime = this._latestBlocks.reduce(
             (total, block, index)=>{
 
                 let blockTime = 0;
@@ -49,7 +49,7 @@ export default class LinkSystemStats{
 
             }, 0);
 
-        this._averageTime = totalTime / this._latestBlocks.length;
+        this._averageTime = this._totalTime / this._latestBlocks.length;
 
         return {
             blockTimes : blockTimes,
@@ -65,14 +65,14 @@ export default class LinkSystemStats{
             throw new Error('Must retrieve latest blocks to determine difficulty');
         }
 
-        const difficultySum = this._latestBlocks.reduce(
+        this._difficultySum = this._latestBlocks.reduce(
             (total, block)=>{
 
                 return  total + parseInt(block.difficulty.toString());
 
             }, 0);
 
-        this._averageDifficulty = (difficultySum / this._latestBlocks.length);
+        this._averageDifficulty = (this._difficultySum / this._latestBlocks.length);
         return ( this._averageDifficulty / 1000000).toFixed(2);
 
     }
@@ -98,11 +98,11 @@ export default class LinkSystemStats{
 
     getHashRate(){  // The api applies only to mining nodes. Calculate from block difficulty and times
 
-        if(!this._averageDifficulty || !this._averageTime){
+        if(!this._difficultySum || !this._totalTime){
             throw new Error('Need difficulty and block time to calculate hashrate');
         }
 
-        return ((this._averageDifficulty / this._averageTime) / 1000000).toFixed(2);
+        return ((this._difficultySum / this._totalTime) / 1000000).toFixed(2);
 
     }
 
