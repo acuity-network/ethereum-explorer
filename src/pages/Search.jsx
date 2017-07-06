@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-export default class Account extends React.Component{
+export default class Search extends React.Component{
 
     render(){
 

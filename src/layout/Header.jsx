@@ -7,6 +7,8 @@ export default class Header extends React.Component {
         super(props);
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.doSearch = this.doSearch.bind(this);
+
         this.state = { searchQuery : '' };
 
     }
@@ -27,6 +29,7 @@ export default class Header extends React.Component {
 
         ev.preventDefault();
 
+        console.log(this.state.searchQuery);
 
     }
 

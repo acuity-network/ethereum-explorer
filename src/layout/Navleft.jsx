@@ -19,7 +19,7 @@ export default class Navleft extends React.Component{
                             </Link>
                         </li>
                         <li>
-                            <Link to="/account">
+                            <Link to="/search">
                                 <i className="fa fa-search" aria-hidden="true"></i>
                             </Link>
                         </li>

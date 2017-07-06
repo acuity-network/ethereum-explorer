@@ -3,7 +3,7 @@ import React from 'react'
 import {Route} from 'react-router-dom'
 
 import Home from './pages/Home.jsx';
-import Account from './pages/Account.jsx';
+import Search from './pages/Search.jsx';
 
 
 export default class RoutesList extends React.Component{
@@ -13,7 +13,8 @@ export default class RoutesList extends React.Component{
 
             <div className="page-content">
                 <Route exact path="/" component={Home}></Route>
-                <Route path="/account" component={Account}></Route>
+                <Route path="/search" component={Search}></Route>
+                <Route path="/search/:searchaddress" component={Search}></Route>
                 <div className="clearfix"></div>
             </div>
 
