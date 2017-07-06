@@ -1,4 +1,3 @@
-
 // Core library for interactions with the LINK blockchain
 
 import web3 from 'web3';
@@ -7,9 +6,9 @@ import  LinkSystemStats from './LinkSystemStats';
 
 export default class LinkClient {
 
-    constructor(nodeUri){
+    constructor(nodeUri) {
 
-        if(!nodeUri){
+        if (!nodeUri) {
             throw new Error('No blockchain node specified');
         }
 
@@ -19,17 +18,28 @@ export default class LinkClient {
 
     }
 
-    getSystemStats(){
+    getSystemStats() {
 
-        return {
-            latestBlocks : this._systemStats.getLatestBlocks(),
-            peerCount : this._systemStats.getPeerCount(),
-            difficulty : this._systemStats.getAverageDifficulty(),
-            blockTimes : this._systemStats.getBlockTimes(),
-            gasPrice : this._systemStats.getGasPrice(),
-            hashRate : this._systemStats.getHashRate(),
-            syncing : this._systemStats.getSync()
+        let stats = {};
+
+        try {
+
+            stats = {
+                latestBlocks: this._systemStats.getLatestBlocks(),
+                peerCount: this._systemStats.getPeerCount(),
+                difficulty: this._systemStats.getAverageDifficulty(),
+                blockTimes: this._systemStats.getBlockTimes(),
+                gasPrice: this._systemStats.getGasPrice(),
+                hashRate: this._systemStats.getHashRate()
+            };
+
+        } catch (err) {
+
+            alert('Sorry there was an error with this request: ' + err.message);
+
         }
+
+        return stats;
 
     }
 

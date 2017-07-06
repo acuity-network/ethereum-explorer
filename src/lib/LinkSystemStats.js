@@ -36,21 +36,24 @@ export default class LinkSystemStats{
         const totalTime = this._latestBlocks.reduce(
             (total, block, index)=>{
 
+                let blockTime = 0;
+
                 if(index !== 0){
 
-                    blockTimes.push(this._latestBlocks[index].timestamp - this._latestBlocks[index - 1].timestamp)
+                    blockTime = this._latestBlocks[index].timestamp - this._latestBlocks[index - 1].timestamp;
+                    blockTimes.push(blockTime);
 
                 }
 
-                return  total + block.timestamp;
+                return  total + blockTime;
 
             }, 0);
 
-        const averageTime = totalTime / this._latestBlocks.length;
+        this._averageTime = totalTime / this._latestBlocks.length;
 
         return {
             blockTimes : blockTimes,
-            average : averageTime
+            average : this._averageTime
         }
 
 
@@ -69,7 +72,8 @@ export default class LinkSystemStats{
 
             }, 0);
 
-        return ((difficultySum / this._latestBlocks.length) / 1000000).toFixed(2);
+        this._averageDifficulty = (difficultySum / this._latestBlocks.length);
+        return ( this._averageDifficulty / 1000000).toFixed(2);
 
     }
 
@@ -92,9 +96,13 @@ export default class LinkSystemStats{
 
     }
 
-    getHashRate(){  // Applies only to miner on the specific node
+    getHashRate(){  // The api applies only to mining nodes. Calculate from block difficulty and times
 
-        return this._web3.eth.hashrate.toString()
+        if(!this._averageDifficulty || !this._averageTime){
+            throw new Error('Need difficulty and block time to calculate hashrate');
+        }
+
+        return ((this._averageDifficulty / this._averageTime) / 1000000).toFixed(2);
 
     }
 
