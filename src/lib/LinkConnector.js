@@ -1,6 +1,7 @@
 
 // LinkConnector - A library to connect to an Ethereum based block chain.
-// Currently the connection is to a node specified by IP - connection methods will change in the future
+// Currently the connection is to a node specified by IP - connection methods will be added in the future
+// hence the abstract base class.
 
 
 // Abstract base class

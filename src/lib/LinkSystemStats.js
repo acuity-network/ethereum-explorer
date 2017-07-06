@@ -32,7 +32,7 @@ export default class LinkSystemStats{
 
         let blockTimes = [];
 
-        // Get individual block times at the same time we figure out the average
+        // Get individual block times at the same time as we figure out the average
         const totalTime = this._latestBlocks.reduce(
             (total, block, index)=>{
 

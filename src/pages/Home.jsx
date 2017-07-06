@@ -4,6 +4,7 @@ import LinkClient from '../lib/LinkClient';
 
 import {Bar, defaults as chartDefaults} from 'react-chartjs-2';
 
+// Ethereum Explorer home page - displays system stats
 
 export default class Home extends React.Component {
 
@@ -61,9 +62,12 @@ export default class Home extends React.Component {
             ]
         };
 
+        // Just clone the chart options for now.
         let blockTimeChartData = JSON.parse(JSON.stringify(difficultyChartData));
 
         blockTimeChartData.datasets[0].label = 'Block time';
+
+        // We only know the block times for the last 9 blocks, therefore there are only 9 labels.
         blockTimeChartData.labels = Array.apply(null, Array(9)).map(String.prototype.valueOf,"");
         blockTimeChartData.datasets[0].data = systemStats.blockTimes.blockTimes;
 

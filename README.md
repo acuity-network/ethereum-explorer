@@ -33,3 +33,9 @@ Once you have a node up and running, modify the node_uri field in src/config.js 
 
 - Running npm start will launch webpack's dev server on port 8080 which will conflict with the
 default dapp port if your node is run with Parity (Geth has fewer config issues in my experience).
+
+#### Contributing and forking
+
+Contributors are more than welcome, please just submit a pull request.
+
+Ethereum Explorer is released under the Apache license, feel free to re-use as you will!
