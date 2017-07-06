@@ -3,6 +3,7 @@
 // Currently the connection is to a node specified by IP - connection methods will be added in the future
 // hence the abstract base class.
 
+const web3 = require('web3');
 
 // Abstract base class
 class LinkConnectorBase{

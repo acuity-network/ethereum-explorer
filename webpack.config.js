@@ -4,6 +4,8 @@ const path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const config = require('./config');
+
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: './src/index.html',
     filename: 'index.html',
@@ -17,6 +19,7 @@ module.exports = {
     ],
     output: {
         path: path.resolve('dist'),
+        publicPath : config.base_url,
         filename: 'bundle.js'
     },
     module: {

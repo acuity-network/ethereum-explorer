@@ -1,6 +1,5 @@
 // Core library for interactions with the LINK blockchain
 
-import web3 from 'web3';
 import LinkHTTPConnector from './LinkConnector.js';
 import  LinkSystemStats from './LinkSystemStats';
 

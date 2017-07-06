@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {config} from '../config.js';
+import {config} from '../../config.js';
 import LinkClient from '../lib/LinkClient';
 
 import {Bar, defaults as chartDefaults} from 'react-chartjs-2';
