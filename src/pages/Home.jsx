@@ -122,14 +122,14 @@ export default class Home extends React.Component {
 
             <div className="home-page content-page">
 
-                <div className="col-md-3 col-sm-6 col-xs-6 stats-block">
+                <div className="col-md-3 col-sm-6 col-xs-12 stats-block">
 
                     <label>Peers</label>
                     <span className="statValue">{this.state.systemStats.peerCount}</span>
 
                 </div>
 
-                <div className="col-md-3 col-sm-6 col-xs-6 stats-block">
+                <div className="col-md-3 col-sm-6 col-xs-12 stats-block">
 
                     <label>Latest Block</label>
                     <span
@@ -137,21 +137,21 @@ export default class Home extends React.Component {
 
                 </div>
 
-                <div className="col-md-3 col-sm-6 col-xs-6 stats-block">
+                <div className="col-md-3 col-sm-6 col-xs-12 stats-block">
 
                     <label>Gas price</label>
                     <span className="statValue">{this.state.systemStats.gasPrice} Gwei</span>
 
                 </div>
 
-                <div className="col-md-3 col-sm-6 col-xs-6 stats-block">
+                <div className="col-md-3 col-sm-6 col-xs-12 stats-block">
 
                     <label>Ave. difficulty</label>
                     <span className="statValue">{this.state.systemStats.difficulty} MH</span>
 
                 </div>
 
-                <div className="col-md-3 col-sm-6 col-xs-6 stats-chart">
+                <div className="col-md-3 col-sm-6 col-xs-12 stats-chart">
 
                     <label>Difficulty (MH)</label>
 
@@ -161,7 +161,7 @@ export default class Home extends React.Component {
 
                 </div>
 
-                <div className="col-md-3 col-sm-6 col-xs-6 stats-chart">
+                <div className="col-md-3 col-sm-6 col-xs-12 stats-chart">
 
                     <label>Block time (s)</label>
 
