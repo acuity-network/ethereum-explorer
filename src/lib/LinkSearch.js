@@ -11,11 +11,25 @@ export default class LinkSearch{
 
     getBlock(hashOrNumber){
 
-        return this._web3.eth.getBlock(hashOrNumber);
+        let block = {};
+
+        try{
+
+            block = this._web3.eth.getBlock(hashOrNumber);
+
+        }catch(err){
+
+            return null;
+
+        }
 
     }
 
     getTransaction(hash){
+
+        if(hash.length < 64 || !this._web3.isAddress(hash)){
+            return;
+        }
 
         return this._web3.eth.getTransaction(hash);
 
@@ -23,6 +37,11 @@ export default class LinkSearch{
 
     getBalance(accountHash){
 
+        if(!this._web3.isAddress(accountHash)){
+            return;
+        }
+
+        // Balance is returned as big number.
         const balance = this._web3.fromWei(this._web3.eth.getBalance(accountHash), "ether");
         return balance.toString();
 
