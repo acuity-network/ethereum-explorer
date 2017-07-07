@@ -26,8 +26,13 @@ export default class LinkClient {
     // A block
     doSearch(query){
 
-       this._linkSearch
+       const results = {
+           block : this._linkSearch.getBlock(),
+           balance : this._linkSearch.getBalance(),
+           transaction : this._linkSearch.getTransaction()
+       };
 
+       return results;
 
     }
 
