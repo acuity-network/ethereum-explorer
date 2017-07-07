@@ -7,12 +7,6 @@ import Search from './pages/Search.jsx';
 
 export default class RoutesList extends React.Component{
 
-    constructor(props){
-
-        super(props);
-
-    }
-
     render(){
 
         return (
@@ -20,8 +14,8 @@ export default class RoutesList extends React.Component{
             <div className="page-content">
 
                 <Route exact path="/" render={()=><Home linkClient={this.props.linkClient}/>}/> />
-                <Route exact path="/search" component={Search}></Route>
-                <Route path="/search/:searchquery" component={Search}></Route>
+                <Route exact path="/search" render={()=><Search linkClient={this.props.linkClient}/>}/>
+                <Route path="/search/:searchquery" render={()=><Search linkClient={this.props.linkClient}/>}/>
 
                 <div className="clearfix"></div>
             </div>
