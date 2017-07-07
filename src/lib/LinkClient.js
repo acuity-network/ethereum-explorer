@@ -27,9 +27,9 @@ export default class LinkClient {
     doSearch(query){
 
        const results = {
-           block : this._linkSearch.getBlock(),
-           balance : this._linkSearch.getBalance(),
-           transaction : this._linkSearch.getTransaction()
+           // block : this._linkSearch.getBlock(query),
+           balance : this._linkSearch.getBalance(query),
+           // transaction : this._linkSearch.getTransaction(query)
        };
 
        return results;
@@ -46,6 +46,8 @@ export default class LinkClient {
             gasPrice: this._systemStats.getGasPrice(),
             hashRate: this._systemStats.getHashRate()
         };
+
+        console.log(stats);
 
         return stats;
 

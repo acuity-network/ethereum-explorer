@@ -17,13 +17,15 @@ export default class LinkSearch{
 
     getTransaction(hash){
 
-        return web3.eth.getTransaction(hash);
+        return this._web3.eth.getTransaction(hash);
 
     }
 
     getBalance(accountHash){
 
-        web3.fromWei(web3.eth.getBalance(accountHash));
+        const balance = this._web3.fromWei(this._web3.eth.getBalance(accountHash), "ether");
+
+        return balance.toString();
 
     }
 

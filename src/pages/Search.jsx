@@ -7,10 +7,21 @@ export default class Search extends React.Component{
 
         super(props);
 
+        this.state = {
+            query : null,
+            block : null,
+            transaction : null,
+            balance : null
+        };
+
+    }
+
+    componentDidMount() {
+
         if (this.props.match.params && this.props.match.params.searchquery){
 
             this.state = {
-                query : props.match.params.searchquery,
+                query : this.props.match.params.searchquery,
                 block : null,
                 transaction : null,
                 balance : null
@@ -28,7 +39,7 @@ export default class Search extends React.Component{
 
         try{
 
-            const searchResults = this._linkClient.doSearch();
+            const searchResults = this._linkClient.doSearch(this.state.query);
             const state = Object.assign(this.state, searchResults);
             this.setState(state);
 
