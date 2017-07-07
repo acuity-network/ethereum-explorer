@@ -1,6 +1,8 @@
-import React from 'react';
 
-export default class Header extends React.Component {
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+
+class Header extends React.Component {
 
     constructor(props){
 
@@ -28,8 +30,7 @@ export default class Header extends React.Component {
     doSearch(ev){
 
         ev.preventDefault();
-
-        console.log(this.state.searchQuery);
+        this.props.history.push('/search/' + this.state.searchQuery);
 
     }
 
@@ -70,3 +71,5 @@ export default class Header extends React.Component {
     }
 
 }
+
+export default withRouter(Header);
