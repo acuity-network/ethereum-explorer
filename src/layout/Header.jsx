@@ -44,7 +44,7 @@ export default class Header extends React.Component {
 
                 <div className="header-block-right">
 
-                    <span className="link-name">Link Blockchain Explorer</span>
+                    <span className="link-name">Ethereum Explorer</span>
 
                     <form className="item-search" onSubmit={this.doSearch}>
 
