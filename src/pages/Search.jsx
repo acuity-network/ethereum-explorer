@@ -9,7 +9,7 @@ export default class Search extends React.Component{
 
         if (props.match.params && props.match.params.searchquery){
 
-            console.log(props.match.params.searchquery);
+
 
         }
 

@@ -1,7 +1,5 @@
 
 import React from 'react';
-import {config} from '../../config';
-import LinkClient from '../lib/LinkClient';
 
 import {Bar, defaults as chartDefaults} from 'react-chartjs-2';
 
@@ -12,7 +10,8 @@ export default class Home extends React.Component {
     constructor(props) {
 
         super(props);
-        this._link = new LinkClient(config.node_uri);
+
+        this._link = this.props.linkClient;
 
         // Remove grid and labels on charts
         this.chartOptions = {

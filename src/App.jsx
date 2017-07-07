@@ -10,8 +10,18 @@ import Footer from './layout/Footer.jsx';
 import { BrowserRouter as Router } from 'react-router-dom';
 import RoutesList from './RoutesList';
 
+import {config} from '../config';
+import LinkClient from './lib/LinkClient';
+
 
 export default class App extends React.Component {
+
+    constructor(){
+
+        super();
+        this.linkClient = new LinkClient(config.node_uri);
+
+    }
 
     render() {
 
@@ -29,7 +39,7 @@ export default class App extends React.Component {
 
                         <div className="content-middle">
 
-                            <RoutesList/>
+                            <RoutesList linkClient={this.linkClient}/>
                             <Footer></Footer>
 
                         </div>

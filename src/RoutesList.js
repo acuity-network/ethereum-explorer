@@ -7,13 +7,19 @@ import Search from './pages/Search.jsx';
 
 export default class RoutesList extends React.Component{
 
+    constructor(props){
+
+        super(props);
+
+    }
+
     render(){
 
         return (
 
             <div className="page-content">
 
-                <Route exact path="/" component={Home}></Route>
+                <Route exact path="/" render={()=><Home linkClient={this.props.linkClient}/>}/> />
                 <Route exact path="/search" component={Search}></Route>
                 <Route path="/search/:searchquery" component={Search}></Route>
 
