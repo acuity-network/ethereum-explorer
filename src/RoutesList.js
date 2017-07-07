@@ -20,7 +20,6 @@ export default class RoutesList extends React.Component{
                 <div className="clearfix"></div>
             </div>
 
-
         )
 
     }
