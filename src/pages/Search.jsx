@@ -7,6 +7,8 @@ export default class Search extends React.Component{
 
         super(props);
 
+        this._linkClient = this.props.linkClient;
+
         if (props.match.params && props.match.params.searchquery){
 
             this.state = { query : props.match.params.searchquery };
@@ -19,7 +21,16 @@ export default class Search extends React.Component{
 
     doSearch(){
 
-        
+        try{
+
+            const searchResults = this._linkClient.doSearch();
+
+        }catch(err){
+
+            alert('Sorry but there was an error: ' + err.message);
+
+        }
+
 
     }
 

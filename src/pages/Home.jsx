@@ -81,8 +81,19 @@ export default class Home extends React.Component {
 
     getStats() {
 
-        const systemStats = this._link.getSystemStats(),
-            charts = this.getChartData(systemStats);
+        let systemStats = {};
+
+        try{
+
+            systemStats = this._link.getSystemStats();
+
+        }catch(err){
+
+            alert('Sorry but there was an error with this request: ' + err.message);
+            return;
+        }
+
+        const charts = this.getChartData(systemStats);
 
         if (!this.state || !this.state.systemStats) {
             this.state = {systemStats: systemStats, charts: charts};
