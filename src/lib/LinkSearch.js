@@ -24,7 +24,6 @@ export default class LinkSearch{
     getBalance(accountHash){
 
         const balance = this._web3.fromWei(this._web3.eth.getBalance(accountHash), "ether");
-
         return balance.toString();
 
     }
