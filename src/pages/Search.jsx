@@ -1,6 +1,8 @@
 
 import React from 'react';
 
+import BlockDisplay from '../components/BlockDisplay.jsx';
+
 export default class Search extends React.Component{
 
     constructor(props){
@@ -55,6 +57,27 @@ export default class Search extends React.Component{
     }
 
     render(){
+
+        if(this.state.block){
+
+            return(<BlockDisplay block={this.state.block} />)
+
+        }
+
+        if(this.state.balance){
+
+            return(
+
+                <div className="search-page content-page">
+
+                    <h2 className="balance-heading">Your balance:</h2>
+                    <span className="balance-span">{this.state.balance} link</span>
+
+                </div>
+
+            )
+
+        }
 
         return(
 

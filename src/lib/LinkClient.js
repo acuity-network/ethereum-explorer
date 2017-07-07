@@ -20,10 +20,10 @@ export default class LinkClient {
 
     }
 
-    // Take a hash and search for:
-    // An account balance
-    // A transaction
-    // A block
+    // Take a hash or number and search for:
+    // - An account balance
+    // - A transaction
+    // - A block
     doSearch(query){
 
        const results = {

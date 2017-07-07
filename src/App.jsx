@@ -8,7 +8,7 @@ import Header from './layout/Header.jsx';
 import Footer from './layout/Footer.jsx';
 
 import { BrowserRouter as Router } from 'react-router-dom';
-import RoutesList from './RoutesList';
+import RoutesList from './RoutesList.jsx';
 
 import {config} from '../config';
 import LinkClient from './lib/LinkClient';

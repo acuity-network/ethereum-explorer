@@ -23,6 +23,8 @@ export default class LinkSearch{
 
         }
 
+        return block;
+
     }
 
     getTransaction(hash){
@@ -43,7 +45,7 @@ export default class LinkSearch{
 
         // Balance is returned as big number.
         const balance = this._web3.fromWei(this._web3.eth.getBalance(accountHash), "ether");
-        return balance.toString();
+        return Number(balance.toString());
 
     }
 
