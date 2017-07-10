@@ -23,7 +23,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        loaders: [
+        rules: [
             { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
             { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
             {
