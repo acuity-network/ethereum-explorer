@@ -8,16 +8,29 @@ export default class LinkSystemStats{
 
     }
 
-    getLatestBlocks(){
+    // Function will determine the state of the system: 'synced' or 'synchronising'.
+    // It is necessary to call this function before any of the others that require block calculations
+    // as web3.eth.blockNumber (latest block) will be zero if the node is syncing (in that case use the
+    // current block as the latest block).
+    getState(){
 
         const syncing = this._web3.eth.syncing;
 
+        this._syncing = !!syncing;
+        this._latestBlockNumber = !syncing ? this._web3.eth.blockNumber : syncing.currentBlock;
 
-        const latestBlockNumber = !syncing ? this._web3.eth.blockNumber : syncing.currentBlock;
+        return this._syncing ? 'synchronising' : 'synced';
+    }
+
+    getLatestBlocks(){
+
+        if(typeof this._syncing === 'undefined'){
+            throw new Error('Must call system state to get latest blocks');
+        }
 
         this._latestBlocks = [];
 
-        for(let i = latestBlockNumber - 9; i <= latestBlockNumber; i++ ){
+        for(let i = this._latestBlockNumber - 9; i <= this._latestBlockNumber; i++ ){
 
             this._latestBlocks.push(this._web3.eth.getBlock(i));
 

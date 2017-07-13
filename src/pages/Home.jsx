@@ -133,6 +133,13 @@ export default class Home extends React.Component {
 
                 <div className="col-md-3 col-sm-6 col-xs-12 stats-block">
 
+                    <label>Status</label>
+                    <span className="statValue">{this.state.systemStats.state}</span>
+
+                </div>
+
+                <div className="col-md-3 col-sm-6 col-xs-12 stats-block">
+
                     <label>Peers</label>
                     <span className="statValue">{this.state.systemStats.peerCount}</span>
 

@@ -19,7 +19,7 @@ export default class LinkClient {
         }
 
         this._systemStats = new LinkSystemStats(this._web3);
-        // this._linkSearch = new LinkSearch(this._web3);
+        this._linkSearch = new LinkSearch(this._web3);
 
 
     }
@@ -43,6 +43,7 @@ export default class LinkClient {
     getSystemStats() {
 
         const stats = {
+            state : this._systemStats.getState(),
             latestBlocks: this._systemStats.getLatestBlocks(),
             peerCount: this._systemStats.getPeerCount(),
             difficulty: this._systemStats.getAverageDifficulty(),
