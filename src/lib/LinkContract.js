@@ -35,7 +35,11 @@ export default class LinkContract{
        return contractTemplate.new(constructorArgs, contractOptions,
            (err, contractDetails)=>{
 
-                if(err) throw new Error(err.message);
+                if(err){
+
+                    console.error(err.message);
+                    return callBack(err);
+                }
 
                 const newContract = {
                     abi : ABI,
@@ -43,7 +47,7 @@ export default class LinkContract{
                     transactionHash : contractDetails.transactionHash
                 };
 
-                callBack(newContract);
+                callBack(null, newContract);
 
             }
        );

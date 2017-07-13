@@ -11,7 +11,8 @@ export default class Demo extends React.Component {
 
         super(props);
 
-        const web3 = this.props.linkClient.getWeb3Instance();
+        const web3 = this.props.linkClient.getWeb3Instance(),
+            TRANSACTION_GAS = 3000000;  // The transaction will fail silently if there is not enough gas.
 
         const contractData = {
             ABI: [{"constant":false,"inputs":[],"name":"kill","outputs":[],"payable":false,"type":"function"},{"inputs":[],"payable":false,"type":"constructor"}],
@@ -24,18 +25,48 @@ export default class Demo extends React.Component {
 
             const contract = new LinkContract(web3);
 
-            const contractHandle = contract.createNew(contractData.ABI, contractData.byteCode, 'Hi there', web3.eth.accounts[0], 300000,
-                (result)=>{
+            new Promise(
+                (resolve, reject)=>{
 
-                    if(!result.address){
-                        return;
-                    }
+                    contract.createNew(contractData.ABI, contractData.byteCode, 'Hi there', web3.eth.accounts[0], TRANSACTION_GAS,
+                        (err, result)=>{
 
-                    console.log('success');
-                    console.log(result);
+                            if(err){
+                                return alert(err);
+                            }
+
+                            if(!result.address){
+                                console.log('mining...');
+                                return;
+                            }
+
+                            console.log('success');
+                            console.log(result);
+
+                            resolve(result);
+
+                        }
+                    )
 
                 }
-            )
+            ).then(
+                (newContract)=>{
+
+                    // Now get the contract instance with the ABI and the address
+                    const greeter = web3.eth.contract(newContract.abi).at(newContract.address);
+                    console.log(greeter.greet());
+
+
+                }
+            ).catch(
+                (error)=>{
+
+                    console.error(error.message);
+
+                }
+            );
+
+
         }
 
 

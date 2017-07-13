@@ -58,8 +58,6 @@ export default class LinkClient {
             hashRate: this._systemStats.getHashRate()
         };
 
-        console.log(stats);
-
         return stats;
 
     }
