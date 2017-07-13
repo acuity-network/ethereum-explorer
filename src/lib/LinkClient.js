@@ -24,6 +24,12 @@ export default class LinkClient {
 
     }
 
+    getWeb3Instance(){
+
+        return this._web3;
+
+    }
+
     // Take a hash or number and search for:
     // - An account balance
     // - A transaction
