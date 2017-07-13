@@ -38,8 +38,9 @@ export default class LinkContract{
                 if(err) throw new Error(err.message);
 
                 const newContract = {
+                    abi : ABI,
                     address : contractDetails.address,
-                    transaction : contractDetails.transactionHash
+                    transactionHash : contractDetails.transactionHash
                 };
 
                 callBack(newContract);
