@@ -4,6 +4,7 @@ import {Route} from 'react-router-dom'
 
 import Home from './pages/Home.jsx';
 import Search from './pages/Search.jsx';
+import Demo from './pages/Demo.jsx';
 
 export default class RoutesList extends React.Component{
 
@@ -31,6 +32,7 @@ export default class RoutesList extends React.Component{
             <div className="page-content">
 
                 <Route exact path="/" render={()=><Home linkClient={this.props.linkClient}/>} />
+                <Route exact path="/demo" render={()=><Demo linkClient={this.props.linkClient}/>} />
                 <Route exact path="/search" render={SearchPage} />
                 <Route path="/search/:searchquery" render={SearchPage} />
 
