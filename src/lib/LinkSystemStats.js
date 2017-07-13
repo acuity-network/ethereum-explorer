@@ -10,9 +10,12 @@ export default class LinkSystemStats{
 
     getLatestBlocks(){
 
-        this._latestBlocks = [];
+        const syncing = this._web3.eth.syncing;
 
-        const latestBlockNumber = this._web3.eth.blockNumber;
+
+        const latestBlockNumber = !syncing ? this._web3.eth.blockNumber : syncing.currentBlock;
+
+        this._latestBlocks = [];
 
         for(let i = latestBlockNumber - 9; i <= latestBlockNumber; i++ ){
 

@@ -14,8 +14,12 @@ export default class LinkClient {
 
         this._web3 = LinkHTTPConnector.connect(nodeUri);
 
+        if(!this._web3.isConnected()){
+            throw new Error('Not connected to network');
+        }
+
         this._systemStats = new LinkSystemStats(this._web3);
-        this._linkSearch = new LinkSearch(this._web3);
+        // this._linkSearch = new LinkSearch(this._web3);
 
 
     }
