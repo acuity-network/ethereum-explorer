@@ -12,15 +12,17 @@ export default class Demo extends React.Component {
 
         super(props);
 
-        this.state.web3 = this.props.linkClient.getWeb3Instance();
+        this.web3 = this.props.linkClient.getWeb3Instance();
 
+        this.createClass = this.createClass.bind(this);
     }
+
 
     createClass(contractData){
 
         contractData.ABI = JSON.parse(contractData.ABI);
 
-        const web3 = this._web3,
+        const web3 = this.web3,
             TRANSACTION_GAS = 3000000;  // The transaction will fail silently if there is not enough gas.
 
         try {
