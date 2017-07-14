@@ -40,7 +40,6 @@ export default class CreateContractForm extends React.Component {
     handleSubmit(ev){
 
         ev.preventDefault();
-
         this.props.submitForm(this.state);
     }
 

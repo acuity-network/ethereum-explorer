@@ -18,7 +18,11 @@ export default class Demo extends React.Component {
     }
 
 
-    createClass(contractData){
+    createClass(data){
+
+        const contractData = JSON.parse(JSON.stringify(data));
+
+        console.log(contractData.message);
 
         contractData.ABI = JSON.parse(contractData.ABI);
 
@@ -27,50 +31,33 @@ export default class Demo extends React.Component {
 
         try {
 
+            // Retrieve an account with some gas in it
             web3.personal.unlockAccount(web3.eth.accounts[0], 'password'); // Demo account, you still need a private key to unlock.
 
             const contract = new LinkContract(web3);
 
-            new Promise(
-                (resolve, reject) => {
+            contract.createNew(contractData.ABI, contractData.byteCode, contractData.message, web3.eth.accounts[0], TRANSACTION_GAS,
+                (err, result) => {
 
-                    contract.createNew(contractData.ABI, contractData.byteCode, 'Hi there', web3.eth.accounts[0], TRANSACTION_GAS,
-                        (err, result) => {
+                    if (err) {
+                        return alert(err);
+                    }
 
-                            if (err) {
-                                return alert(err);
-                            }
+                    if (!result.address) {
 
-                            if (!result.address) {
-                                console.log('mining...');
-                                return;
-                            }
+                        this.setState({ mining : true });
+                        console.log('mining...');
+                        return;
+                    }
 
-                            console.log('success');
-                            console.log(result);
+                    console.log('success');
+                    console.log(result);
 
-                            resolve(result);
+                    const greeter = web3.eth.contract(result.abi).at(result.address);
 
-                        }
-                    )
-
-                }
-            ).then(
-                (newContract) => {
-
-                    // Now get the contract instance with the ABI and the address
-                    const greeter = web3.eth.contract(newContract.abi).at(newContract.address);
                     console.log(greeter.greet());
-
-
                 }
-            ).catch(
-                (error) => {
-
-                    console.error(error.message);
-
-                }
-            );
+            )
 
 
         }
