@@ -1,4 +1,5 @@
 
+// LinkContract - manage contract specific operations
 
 export default class LinkContract{
 

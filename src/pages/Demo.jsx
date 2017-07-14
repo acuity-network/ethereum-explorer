@@ -24,7 +24,6 @@ export default class Demo extends React.Component {
             web3.personal.unlockAccount(web3.eth.accounts[0], 'password'); // Demo account, you still need a private key to unlock.
 
             const contract = new LinkContract(web3);
-            
 
             new Promise(
                 (resolve, reject)=>{
