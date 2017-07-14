@@ -87,7 +87,7 @@ export default class CreateContractForm extends React.Component {
 
                 <div className="form-group">
 
-                    <button type="submit" className="btn btn-primary">Create contract</button>
+                    <button type="submit" className="btn btn-primary pull-right">Create contract</button>
 
                 </div>
 

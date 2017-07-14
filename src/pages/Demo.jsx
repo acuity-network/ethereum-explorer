@@ -13,17 +13,20 @@ export default class Demo extends React.Component {
         super(props);
 
         this.web3 = this.props.linkClient.getWeb3Instance();
-
         this.createClass = this.createClass.bind(this);
+        this.activateContract = this.activateContract.bind(this);
+        this.finished = this.finished.bind(this);
+
+        this.state = {
+            showForm: true
+        };
+
     }
 
 
-    createClass(data){
+    createClass(data) {
 
         const contractData = JSON.parse(JSON.stringify(data));
-
-        console.log(contractData.message);
-
         contractData.ABI = JSON.parse(contractData.ABI);
 
         const web3 = this.web3,
@@ -45,7 +48,7 @@ export default class Demo extends React.Component {
 
                     if (!result.address) {
 
-                        this.setState({ mining : true });
+                        this.setState({mining: true});
                         console.log('mining...');
                         return;
                     }
@@ -53,9 +56,9 @@ export default class Demo extends React.Component {
                     console.log('success');
                     console.log(result);
 
-                    const greeter = web3.eth.contract(result.abi).at(result.address);
+                    this.greeter = web3.eth.contract(result.abi).at(result.address);
+                    this.setState({mining: false, contractCreated: true});
 
-                    console.log(greeter.greet());
                 }
             )
 
@@ -70,7 +73,51 @@ export default class Demo extends React.Component {
 
     }
 
+    activateContract() {
+
+        const result = this.greeter.greet();
+        this.setState({ contractResult : result, contractCreated: false });
+
+    }
+
+    finished(){
+
+        this.setState({ contractResult : '', showForm: true })
+
+    }
+
     render() {
+
+        let content ;
+
+        if(this.state.showForm){
+
+            content = <CreateContractForm submitForm={this.createClass}/>
+
+        }
+
+        if(this.state.mining){
+
+            content = <p className="alert alert-info">Mining. Please wait...</p>
+
+        }
+
+        if(this.state.contractCreated){
+
+            content = <div className="activate-contract">
+                        <button className="btn btn-success btn-lg" onClick={this.activateContract}>ACTIVATE CONTRACT</button>
+                      </div>
+
+        }
+
+        if(this.state.contractResult){
+
+            content = <div className="result">
+                        <h1>{this.state.contractResult}</h1>
+                            <button className="btn btn-default pull-right">OK</button>
+                      </div>
+
+        }
 
         return (
 
@@ -80,7 +127,7 @@ export default class Demo extends React.Component {
 
                 <div className="demo-content col-md-6 col-md-offset-3 ">
 
-                    <CreateContractForm submitForm={this.createClass}/>
+                    {content}
 
                 </div>
 
