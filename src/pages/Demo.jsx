@@ -1,5 +1,7 @@
 import React from 'react';
 
+import CreateContractForm from '../components/CreateContractForm.jsx';
+
 import LinkContract from '../lib/LinkContract.js';
 
 // Ethereum Explorer home page - displays system stats
@@ -10,14 +12,7 @@ export default class Demo extends React.Component {
 
         super(props);
 
-        this.state = {
-            abi : '',
-            code : '',
-            message : ''
-        };
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
 
         return;
 
@@ -102,24 +97,8 @@ export default class Demo extends React.Component {
 
     }
 
-    handleSubmit(ev){
-
-        ev.preventDefault();
-
-        console.log(this.state);
-
-    }
-
-    handleInputChange(event) {
-
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
-
+    createClass(formItems){
+        console.log(formItems);
     }
 
     render() {
@@ -130,44 +109,11 @@ export default class Demo extends React.Component {
 
                 <h3>Deploy new smart contract</h3>
 
-                <div className="demo-content col-md-6 col-md-offset-3">
+                <div className="demo-content col-md-6 col-md-offset-3 ">
 
-                    <form onSubmit={this.handleSubmit}>
-
-                        <div className="form-group">
-
-                            <label>Contract ABI</label>
-
-                            <textarea className="form-control" value={this.state.abi} name="abi" onChange={this.handleInputChange}></textarea>
-
-                        </div>
-
-                        <div className="form-group">
-
-                            <label>Contract Bytecode</label>
-
-                            <textarea className="form-control" value={this.state.code} name="code" onChange={this.handleInputChange}></textarea>
-
-                        </div>
-
-                        <div className="form-group">
-
-                            <label>Contract message</label>
-
-                            <input type="text" className="form-control" value={this.state.message} name="message" onChange={this.handleInputChange}></input>
-
-                        </div>
-
-                        <div className="form-group">
-
-                            <button type="submit" className="btn btn-primary">Create contract</button>
-
-                        </div>
-
-                    </form>
+                    <CreateContractForm submitForm={this.createClass}/>
 
                 </div>
-
 
             </div>
 
