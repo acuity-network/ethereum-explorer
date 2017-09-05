@@ -4,11 +4,13 @@ import {Route} from 'react-router-dom'
 
 import Home from './pages/Home.jsx';
 import Search from './pages/Search.jsx';
+import Block from './pages/Block.jsx';
 
 export default class RoutesList extends React.Component{
 
     constructor(props){
 
+        // this.props.linkClient is supplied via App.jsx
         super(props);
 
 
@@ -31,6 +33,7 @@ export default class RoutesList extends React.Component{
             <div className="page-content">
 
                 <Route exact path="/" render={()=><Home linkClient={this.props.linkClient}/>} />
+                <Route exact path="/block" render={()=><Block linkClient={this.props.linkClient}/>} />
                 <Route exact path="/search" render={SearchPage} />
                 <Route path="/search/:searchquery" render={SearchPage} />
 

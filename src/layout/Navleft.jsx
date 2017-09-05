@@ -19,6 +19,11 @@ export default class Navleft extends React.Component{
                             </Link>
                         </li>
                         <li>
+                            <Link to="/block">
+                                <i className="fa fa-align-justify" aria-hidden="true"></i>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/search">
                                 <i className="fa fa-search" aria-hidden="true"></i>
                             </Link>

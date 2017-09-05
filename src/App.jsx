@@ -18,6 +18,8 @@ export default class App extends React.Component {
     constructor(){
 
         super();
+
+        // Start the application, link the LinkClient to the given node
         this.linkClient = new LinkClient(config.node_uri);
 
     }
