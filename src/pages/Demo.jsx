@@ -4,7 +4,7 @@ import CreateContractForm from '../components/CreateContractForm.jsx';
 
 import LinkContract from '../lib/LinkContract.js';
 
-// Ethereum Explorer home page - displays system stats
+// Ethereum Explorer demo page - creates, deploys and calls into a smart contract.
 
 export default class Demo extends React.Component {
 
@@ -114,7 +114,7 @@ export default class Demo extends React.Component {
 
             content = <div className="result">
                         <h1>{this.state.contractResult}</h1>
-                            <button className="btn btn-default pull-right">OK</button>
+                            <button className="btn btn-default pull-right" onClick={this.finished}>OK</button>
                       </div>
 
         }
