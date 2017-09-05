@@ -30,8 +30,6 @@ export default class Block extends React.Component{
             const block = this._link.getBlock(this.state.blockID);
             this.setState({ block : block });
 
-            console.log(block);
-
         }else{
 
             console.log('Getting last blocks');

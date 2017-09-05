@@ -18,7 +18,7 @@ export default class RoutesList extends React.Component{
 
     render(){
 
-        // Send all props to the child - this is needed to send query params from react-router
+        // Send all props to the child - this method is needed to send query params from react-router
         const SearchPage = (props) => {
             return (
                 <Search
