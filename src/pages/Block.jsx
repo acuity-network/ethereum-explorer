@@ -22,26 +22,33 @@ export default class Block extends React.Component{
         if (this.props.match.params && this.props.match.params.blockid){
 
             this.state = {
-                blockID : this.props.match.params.blockid
+                blockID : this.props.match.params.blockid,
+                block : null
             };
 
-            this._linkClient = this.props.linkClient;
-
             // Search query has been defined as part of the url. Do search.
-            this.doSearch()
+            const block = this._link.getBlock(this.state.blockID);
+            this.setState({ block : block });
+
+        }else{
+
+            console.log('Getting last blocks');
+
         }
 
     }
 
-    // Get the information for an individual block
-    getBlock(blockID){
+    render(){
 
+        if(this.state.block){
 
-    }
+            return <div className="alert alert-info"> This is the block </div>;
 
-    // No blockID specified, show the last ten blocks
-    getLastBlocks(){
+        }else{
 
+            return <div className="alert alert-info"> This is the list of blocks </div>;
+
+        }
 
     }
 

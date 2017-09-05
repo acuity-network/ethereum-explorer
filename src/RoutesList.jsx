@@ -18,10 +18,19 @@ export default class RoutesList extends React.Component{
 
     render(){
 
-        // Send all props to the child
+        // Send all props to the child - this is needed to send query params from react-router
         const SearchPage = (props) => {
             return (
                 <Search
+                    linkClient={this.props.linkClient}
+                    {...props}
+                />
+            );
+        };
+
+        const BlockPage = (props) => {
+            return (
+                <Block
                     linkClient={this.props.linkClient}
                     {...props}
                 />
@@ -33,7 +42,7 @@ export default class RoutesList extends React.Component{
             <div className="page-content">
 
                 <Route exact path="/" render={()=><Home linkClient={this.props.linkClient}/>} />
-                <Route exact path="/block/:blockid" render={()=><Block linkClient={this.props.linkClient}/>} />
+                <Route path="/block/:blockid?" render={BlockPage} />
                 <Route exact path="/search" render={SearchPage} />
                 <Route path="/search/:searchquery" render={SearchPage} />
 

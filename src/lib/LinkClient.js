@@ -58,5 +58,11 @@ export default class LinkClient {
 
     }
 
+    getBlock(hashOrNumber){
+
+        return this._linkSearch.getBlock(hashOrNumber);
+
+    }
+
 
 }
