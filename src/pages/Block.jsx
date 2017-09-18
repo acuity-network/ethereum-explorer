@@ -55,7 +55,7 @@ export default class Block extends React.Component {
 
     render() {
 
-        if(!this.state.block && (!this.state.blocks || !this.state.blocks.length)){
+        if(!this.state.block && !(this.state.blocks && this.state.blocks.length)){
 
             return <div className="alert alert-danger">There are no blocks to show</div>;
 

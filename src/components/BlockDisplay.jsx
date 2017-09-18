@@ -7,11 +7,9 @@ export default class BlockDisplay extends React.Component{
 
         super(props);
 
-    }
-
-    componentDidMount(){
-
-        this.setState({ block : this.props.block });
+        this.state = {
+            block : this.props.block
+        }
 
     }
 
