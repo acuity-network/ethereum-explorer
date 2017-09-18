@@ -8,6 +8,9 @@ export default class MultiBlockDisplay extends React.Component{
 
         super(props);
 
+        // Reverse order of blocks
+        const blocks = this.props.blocks.reverse();
+
         this.state = {
             blocks : this.props.blocks
         }
@@ -23,39 +26,55 @@ export default class MultiBlockDisplay extends React.Component{
 
                 <h2>Latest Blocks Information</h2>
 
-                <table className="table table-striped">
+                <div className="table-responsive">
 
-                    <thead>
-                    <tr>
-                        <th>Number</th>
-                        <th>Difficulty</th>
-                        <th>Transactions</th>
-                    </tr>
-                    </thead>
+                    <table className="table table-striped">
 
-                    <tbody>
-                    {
-                        this.state.blocks.map((block, i)=>
-                            <tr key={i}>
-                                <td>
+                        <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Difficulty</th>
+                            <th>Gas Limit</th>
+                            <th>Gas Used</th>
+                            <th>Uncles</th>
+                            <th>Transactions</th>
+                        </tr>
+                        </thead>
 
-                                    <Link to={'/block/' + block.number}>
-                                        {block.number}
-                                    </Link>
+                        <tbody>
+                        {
+                            this.state.blocks.map((block, i)=>
+                                <tr key={i}>
+                                    <td>
 
-                                </td>
-                                <td>
-                                    {block.difficulty.toString()}
-                                </td>
-                                <td>
-                                    {block.transactions.length}
-                                </td>
-                            </tr>
-                        )
-                    }
-                    </tbody>
+                                        <Link to={'/block/' + block.number}>
+                                            {block.number}
+                                        </Link>
 
-                </table>
+                                    </td>
+                                    <td>
+                                        {block.difficulty.toString()}
+                                    </td>
+                                    <td>
+                                        {block.gasLimit}
+                                    </td>
+                                    <td>
+                                        {block.gasUsed}
+                                    </td>
+                                    <td>
+                                        {block.uncles.length}
+                                    </td>
+                                    <td>
+                                        {block.transactions.length}
+                                    </td>
+                                </tr>
+                            )
+                        }
+                        </tbody>
+
+                    </table>
+
+                </div>
 
             </div>
 
