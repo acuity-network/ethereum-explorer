@@ -63,7 +63,7 @@ export default class Block extends React.Component {
 
         if (this.state.showMulti) {
 
-            return <div className="alert alert-info"> This is the list of blocks </div>;
+            return <MultiBlockDisplay blocks={this.state.blocks}/>
 
 
         } else {

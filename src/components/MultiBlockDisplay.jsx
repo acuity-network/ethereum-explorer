@@ -22,78 +22,35 @@ export default class MultiBlockDisplay extends React.Component{
     render(){
 
         return(
-            <div className="block-display col-md-6 col-md-offset-3">
 
-                <h2>Block Information</h2>
+            <div className="multi-block-display col-md-6 col-md-offset-3">
 
-                <div className="table-responsive">
+                <h2>Latest Blocks Information</h2>
 
-                    <table className="table">
+                <table className="table table-striped">
 
-                        <tbody>
-
+                    <thead>
                         <tr>
-                            <td>
-                                <label>number</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.number}</span>
-                            </td>
+                            <th>Number</th>
+                            <th>Transactions</th>
                         </tr>
+                    </thead>
 
-                        <tr>
-                            <td>
-                                <label>gas limit</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.gasLimit}</span>
-                            </td>
-                        </tr>
+                    <tbody>
+                        {
+                            this.state.blocks.map((block, i)=>
+                                <tr key={i}>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            )
+                        }
+                    </tbody>
 
-                        <tr>
-                            <td>
-                                <label>gas used</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.gasUsed}</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label>difficulty</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.difficulty.toString(10)}</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label>transactions</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.transactions.length}</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label>uncles</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.uncles.length}</span>
-                            </td>
-                        </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
+                </table>
 
             </div>
+
         )
 
     }
