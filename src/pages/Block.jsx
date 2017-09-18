@@ -12,7 +12,10 @@ export default class Block extends React.Component {
         this._link = this.props.linkClient;
 
         this.state = {
-            blockID: null
+            block : null,
+            blocks : null,
+            blockID: null,
+            showMulti : false
         }
 
     }
@@ -55,7 +58,7 @@ export default class Block extends React.Component {
 
     render() {
 
-        if(!this.state.block || !this.state.blocks){
+        if(!this.state.block && (!this.state.blocks || !this.state.blocks.length)){
 
             return <div className="alert alert-danger">There are no blocks to show</div>;
 
