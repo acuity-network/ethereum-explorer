@@ -40,8 +40,8 @@ export default class MultiBlockDisplay extends React.Component{
                         {
                             this.state.blocks.map((block, i)=>
                                 <tr key={i}>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{block.number}</td>
+                                    <td>{block.transactions.length}</td>
                                 </tr>
                             )
                         }
