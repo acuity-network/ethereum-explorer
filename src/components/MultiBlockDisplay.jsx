@@ -15,30 +15,39 @@ export default class MultiBlockDisplay extends React.Component{
 
     render(){
 
+
         return(
 
-            <div className="multi-block-display col-md-6 col-md-offset-3">
+            <div className="multi-block-display col-md-8 col-md-offset-2">
 
                 <h2>Latest Blocks Information</h2>
 
                 <table className="table table-striped">
 
                     <thead>
-                        <tr>
-                            <th>Number</th>
-                            <th>Transactions</th>
-                        </tr>
+                    <tr>
+                        <th>Number</th>
+                        <th>Difficulty</th>
+                        <th>Transactions</th>
+                    </tr>
                     </thead>
 
                     <tbody>
-                        {
-                            this.state.blocks.map((block, i)=>
-                                <tr key={i}>
-                                    <td>{block.number}</td>
-                                    <td>{block.transactions.length}</td>
-                                </tr>
-                            )
-                        }
+                    {
+                        this.state.blocks.map((block, i)=>
+                            <tr key={i}>
+                                <td>
+                                    {block.number}
+                                </td>
+                                <td>
+                                    {block.difficulty.toString()}
+                                </td>
+                                <td>
+                                    {block.transactions.length}
+                                </td>
+                            </tr>
+                        )
+                    }
                     </tbody>
 
                 </table>
@@ -46,7 +55,6 @@ export default class MultiBlockDisplay extends React.Component{
             </div>
 
         )
-
     }
 
 }
