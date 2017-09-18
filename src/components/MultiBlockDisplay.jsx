@@ -1,5 +1,6 @@
 
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class MultiBlockDisplay extends React.Component{
 
@@ -37,9 +38,11 @@ export default class MultiBlockDisplay extends React.Component{
                         this.state.blocks.map((block, i)=>
                             <tr key={i}>
                                 <td>
-                                    <a href={'block/' + block.number}>
+
+                                    <Link to={'/block/' + block.number}>
                                         {block.number}
-                                    </a>
+                                    </Link>
+
                                 </td>
                                 <td>
                                     {block.difficulty.toString()}
