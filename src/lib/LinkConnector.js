@@ -5,7 +5,7 @@
 
 const web3 = require('web3');
 
-// Abstract base class
+// Abstract base class to allow for different connection methods
 class LinkConnectorBase{
 
     constructor() {

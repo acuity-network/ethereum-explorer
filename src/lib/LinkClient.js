@@ -52,9 +52,14 @@ export default class LinkClient {
             hashRate: this._systemStats.getHashRate()
         };
 
-        console.log(stats);
-
         return stats;
+
+    }
+
+    getBlocks(){
+
+        this._systemStats.getState();
+        return this._systemStats.getLatestBlocks();
 
     }
 

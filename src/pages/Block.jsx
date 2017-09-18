@@ -32,7 +32,8 @@ export default class Block extends React.Component{
 
         }else{
 
-            console.log('Getting last blocks');
+            const blocks = this._link.getBlocks();
+            console.log(blocks);
 
         }
 
