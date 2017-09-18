@@ -68,7 +68,7 @@ export default class Block extends React.Component {
 
         } else {
 
-            return <div className="alert alert-info">This is a single block</div>
+            return <BlockDisplay block={this.state.block}/>
 
         }
 

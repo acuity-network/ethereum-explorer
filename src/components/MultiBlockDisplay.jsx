@@ -37,7 +37,9 @@ export default class MultiBlockDisplay extends React.Component{
                         this.state.blocks.map((block, i)=>
                             <tr key={i}>
                                 <td>
-                                    {block.number}
+                                    <a href={'block/' + block.number}>
+                                        {block.number}
+                                    </a>
                                 </td>
                                 <td>
                                     {block.difficulty.toString()}
