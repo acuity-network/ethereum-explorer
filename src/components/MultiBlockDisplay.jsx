@@ -1,17 +1,21 @@
 
 import React from 'react';
 
-export default class BlockDisplay extends React.Component{
+export default class MultiBlockDisplay extends React.Component{
 
     constructor(props){
 
         super(props);
 
+        this.state = {
+            blocks : this.props.blocks
+        }
+
     }
 
     componentDidMount(){
 
-        this.setState({ block : this.props.block });
+        this.setState({ blocks : this.props.blocks });
 
     }
 
