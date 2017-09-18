@@ -13,12 +13,6 @@ export default class MultiBlockDisplay extends React.Component{
 
     }
 
-    componentDidMount(){
-
-        this.setState({ blocks : this.props.blocks });
-
-    }
-
     render(){
 
         return(
