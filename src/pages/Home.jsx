@@ -104,24 +104,38 @@ export default class Home extends React.Component {
 
     }
 
+    // Add a new block to the display
+    addBlock(blockHash){
+
+        const block = this._link.getBlock(blockHash);
+
+        let systemStats = this.state.systemStats;
+        systemStats.latestBlocks.push(block);
+
+        const charts = this.getChartData(systemStats);
+        this.setState({systemStats: systemStats, charts: charts});
+
+    }
+
     componentDidMount() {
 
+        // Get initial ten blocks
         this.getStats();
 
+        // Watch the network for new blocks.
         this._link.watchNetwork(
             (block)=>{
 
                 console.log(block);
-                this.getStats();
+                this.addBlock(block);
+
+            },
+            (error)=>{
+
+                console.error(error.message);
 
             }
         );
-
-    }
-
-    componentWillUnmount() {
-
-        clearInterval(this.timer);
 
     }
 
