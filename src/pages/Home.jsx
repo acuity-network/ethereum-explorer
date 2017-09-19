@@ -108,14 +108,14 @@ export default class Home extends React.Component {
 
         this.getStats();
 
-        // Poll the node for new data. TODO: Do this with a callback.
-        this.timer = setInterval(
-            () => {
+        this._link.watchNetwork(
+            (block)=>{
 
+                console.log(block);
                 this.getStats();
 
-            }, 2000
-        )
+            }
+        );
 
     }
 

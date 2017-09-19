@@ -24,6 +24,24 @@ export default class LinkClient {
 
     }
 
+    // Watch the network for new blocks
+    watchNetwork(callback, errorCallback){
+
+        const filter = this._web3.eth.filter('latest'),
+            that = this;
+
+        filter.watch(function(error, result){
+
+            if(error){
+                return errorCallback(error);
+            }
+
+            callback(result);
+
+        });
+
+    }
+
     // Take a hash or number and search for:
     // - An account balance
     // - A transaction
