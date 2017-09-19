@@ -74,6 +74,26 @@ export default class LinkClient {
 
     }
 
+    // Add a new block to the latestBlocks list and update the stats
+    // Update the block list and stats with a new block
+    updateBlocks(latestBlocks){
+
+        this._systemStats.setLatestBlocks(latestBlocks);
+
+        return {
+
+            state : this._systemStats.getState(),
+            latestBlocks: latestBlocks,
+            peerCount: this._systemStats.getPeerCount(),
+            difficulty: this._systemStats.getAverageDifficulty(),
+            blockTimes: this._systemStats.getBlockTimes(),
+            gasPrice: this._systemStats.getGasPrice(),
+            hashRate: this._systemStats.getHashRate()
+
+        }
+
+    }
+
     getBlocks(){
 
         this._systemStats.getState();

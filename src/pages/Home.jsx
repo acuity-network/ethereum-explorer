@@ -104,30 +104,29 @@ export default class Home extends React.Component {
 
     }
 
-    // Add a new block to the display
-    addBlock(blockHash){
-
-        const block = this._link.getBlock(blockHash);
-
-        let systemStats = this.state.systemStats;
-        systemStats.latestBlocks.push(block);
-
-        const charts = this.getChartData(systemStats);
-        this.setState({systemStats: systemStats, charts: charts});
-
-    }
-
     componentDidMount() {
 
         // Get initial ten blocks
         this.getStats();
 
-        // Watch the network for new blocks.
+        // Watch the network for new blocks. Add the new block to the list of
+        // latest blocks when it's created.
         this._link.watchNetwork(
-            (block)=>{
+            (blockHash)=>{
 
-                console.log(block);
-                this.addBlock(block);
+                // Get the new block
+                let newBlock = this._link.getBlock(blockHash),
+                    latestBlocks = this.state.systemStats.latestBlocks;
+
+                // Only allow ten blocks in the list
+                latestBlocks.shift();
+                latestBlocks.push(newBlock);
+
+                const systemStats = this._link.updateBlocks(latestBlocks),
+                    charts = this.getChartData(systemStats);
+
+                // Update the UI
+                this.setState({systemStats: systemStats, charts: charts});
 
             },
             (error)=>{

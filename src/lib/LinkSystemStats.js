@@ -40,6 +40,12 @@ export default class LinkSystemStats{
 
     }
 
+    setLatestBlocks(blocks){
+
+        this._latestBlocks = blocks;
+
+    }
+
     getBlockTimes(){
 
         if(!this._latestBlocks || !this._latestBlocks.length){
