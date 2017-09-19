@@ -7,8 +7,6 @@ export default class Block extends React.Component {
 
     constructor(props) {
 
-        console.log('Constructing');
-
         super(props);
 
         this._link = this.props.linkClient;
@@ -48,8 +46,6 @@ export default class Block extends React.Component {
                     showMulti : true
                 }
             );
-
-            console.log(blocks);
 
         }
 
