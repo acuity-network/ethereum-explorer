@@ -1,7 +1,7 @@
 import React from 'react';
 
-import BlockDisplay from '../components/BlockDisplay.jsx';
-import MultiBlockDisplay from '../components/MultiBlockDisplay.jsx';
+import TransactionDisplay from '../components/TransactionDisplay.jsx';
+import MultiTransactionDisplay from '../components/MultiTransactionDisplay.jsx';
 
 export default class Transaction extends React.Component {
 
@@ -19,30 +19,30 @@ export default class Transaction extends React.Component {
 
     componentDidMount() {
 
-        // If a second parameter is supplied to the URL, we're looking for a specific block.
-        // If not, show the last ten blocks.
-        if (this.props.match.params && this.props.match.params.blockid) {
+        // If a second parameter is supplied to the URL, we're looking for a specific transaction.
+        // If not, show the last ten transactions.
+        if (this.props.match.params && this.props.match.params.transactionid) {
 
-            const blockID = this.props.match.params.blockid;
+            const transactionID = this.props.match.params.transactionid;
 
             // Search query has been defined as part of the url. Do search.
-            const block = this._link.getTransaction(blockID);
+            const transaction = this._link.getTransaction(transactionID);
             this.setState(
                 {
-                    blockID : blockID,
-                    block: block,
+                    transactionID : transactionID,
+                    transaction: transaction,
                     showMulti : false
                 }
             );
 
         } else {
 
-            // Get last ten blocks
-            const blocks = this._link.getTransactions();
+            // Get last ten transactions
+            const transactions = this._link.getTransactions();
 
             this.setState(
                 {
-                    blocks: blocks,
+                    transactions: transactions,
                     showMulti : true
                 }
             );
@@ -53,20 +53,20 @@ export default class Transaction extends React.Component {
 
     render() {
 
-        if(!this.state.block && !(this.state.blocks && this.state.blocks.length)){
+        if(!this.state.transaction && !(this.state.transactions && this.state.transactions.length)){
 
-            return <div className="alert alert-danger">There are no blocks to show</div>;
+            return <div className="alert alert-danger">There are no transactions to show</div>;
 
         }
 
         if (this.state.showMulti) {
 
-            return <MultiTransactionDisplay blocks={this.state.blocks}/>
+            return <MultiTransactionDisplay transactions={this.state.transactions}/>
 
 
         } else {
 
-            return <TransactionDisplay block={this.state.block}/>
+            return <TransactionDisplay transaction={this.state.transaction}/>
 
         }
 
