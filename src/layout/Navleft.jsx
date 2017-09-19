@@ -24,6 +24,11 @@ export default class Navleft extends React.Component{
                             </Link>
                         </li>
                         <li>
+                            <Link to="/transaction">
+                                <i className="fa fa-exchange" aria-hidden="true"></i>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/search">
                                 <i className="fa fa-search" aria-hidden="true"></i>
                             </Link>
