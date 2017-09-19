@@ -110,7 +110,7 @@ export default class Home extends React.Component {
         this.getStats();
 
         // Watch the network for new blocks. Add the new block to the list of
-        // latest blocks when it's created.
+        // latest blocks when it's created and update the stats + UI.
         this._link.watchNetwork(
             (blockHash)=>{
 
