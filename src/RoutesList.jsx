@@ -5,6 +5,7 @@ import {Route} from 'react-router-dom'
 import Home from './pages/Home.jsx';
 import Search from './pages/Search.jsx';
 import Block from './pages/Block.jsx';
+import Transaction from './pages/Transaction.jsx';
 
 export default class RoutesList extends React.Component{
 
@@ -37,6 +38,16 @@ export default class RoutesList extends React.Component{
             );
         };
 
+        const TransactionPage = (props) => {
+            return (
+                <Transaction
+                    linkClient={this.props.linkClient}
+                    {...props}
+                />
+            );
+        };
+
+
         return (
 
             <div className="page-content">
@@ -44,8 +55,8 @@ export default class RoutesList extends React.Component{
                 <Route exact path="/" render={()=><Home linkClient={this.props.linkClient}/>} />
                 <Route path="/block/:blockid" render={BlockPage} />
                 <Route exact path="/block" render={BlockPage} />
-                <Route path="/transaction/:transactionid" render={BlockPage} />
-                <Route exact path="/transaction" render={BlockPage} />
+                <Route path="/transaction/:transactionid" render={TransactionPage} />
+                <Route exact path="/transaction" render={TransactionPage} />
                 <Route exact path="/search" render={SearchPage} />
                 <Route path="/search/:searchquery" render={SearchPage} />
 
@@ -53,7 +64,6 @@ export default class RoutesList extends React.Component{
             </div>
 
         )
-
     }
 
 }

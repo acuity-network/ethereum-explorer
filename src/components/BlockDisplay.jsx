@@ -1,5 +1,6 @@
 
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class BlockDisplay extends React.Component{
 
@@ -16,7 +17,7 @@ export default class BlockDisplay extends React.Component{
     render(){
 
         return(
-            <div className="block-display col-md-6 col-md-offset-3">
+            <div className="block-display col-md-8 col-md-offset-2">
 
                 <h2>Block Information</h2>
 
@@ -37,6 +38,28 @@ export default class BlockDisplay extends React.Component{
 
                         <tr>
                             <td>
+                                <label>hash</label>
+                            </td>
+                            <td>
+                                <span className="block-display-value">{this.state.block.hash}</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label>parent hash</label>
+                            </td>
+                            <td>
+
+                                <Link to={'/block/' + this.state.block.parentHash}>
+                                    <span className="block-display-value">{this.state.block.parentHash}</span>
+                                </Link>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
                                 <label>gas limit</label>
                             </td>
                             <td>
@@ -50,6 +73,15 @@ export default class BlockDisplay extends React.Component{
                             </td>
                             <td>
                                 <span className="block-display-value">{this.state.block.gasUsed}</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label>miner</label>
+                            </td>
+                            <td>
+                                <span className="block-display-value">{this.state.block.miner}</span>
                             </td>
                         </tr>
 
