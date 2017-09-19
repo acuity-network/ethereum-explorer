@@ -44,6 +44,8 @@ export default class RoutesList extends React.Component{
                 <Route exact path="/" render={()=><Home linkClient={this.props.linkClient}/>} />
                 <Route path="/block/:blockid" render={BlockPage} />
                 <Route exact path="/block" render={BlockPage} />
+                <Route path="/transaction/:transactionid" render={BlockPage} />
+                <Route exact path="/transaction" render={BlockPage} />
                 <Route exact path="/search" render={SearchPage} />
                 <Route path="/search/:searchquery" render={SearchPage} />
 
