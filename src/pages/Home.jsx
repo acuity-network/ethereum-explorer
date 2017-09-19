@@ -122,6 +122,7 @@ export default class Home extends React.Component {
                 latestBlocks.shift();
                 latestBlocks.push(newBlock);
 
+                // Update the stats
                 const systemStats = this._link.updateBlocks(latestBlocks),
                     charts = this.getChartData(systemStats);
 
