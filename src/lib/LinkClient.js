@@ -107,5 +107,17 @@ export default class LinkClient {
 
     }
 
+    getTransactions(){
+
+
+
+    }
+
+    getTransaction(transactionHash){
+
+        return this._linkSearch.getTransaction(transactionHash);
+
+    }
+
 
 }
