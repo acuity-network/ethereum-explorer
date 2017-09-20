@@ -70,7 +70,7 @@ export default class Transaction extends React.Component {
 
                 <h3>Transaction search</h3>
 
-                <form onSubmit={this.doSearch()}>
+                <form onSubmit={this.doSearch}>
 
                     <div className="form-inline">
 
@@ -82,7 +82,7 @@ export default class Transaction extends React.Component {
                             className="form-control"
                             placeholder="Transaction hash"/>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-primary">Submit</button>
 
                     </div>
 
