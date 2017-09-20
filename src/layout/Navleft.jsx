@@ -24,7 +24,7 @@ export default class Navleft extends React.Component{
                             </Link>
                         </li>
                         <li>
-                            <Link to="/address">
+                            <Link to="/account">
                                 <i className="fa fa-address-card-o" aria-hidden="true"></i>
                             </Link>
                         </li>
