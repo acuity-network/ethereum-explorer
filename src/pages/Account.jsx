@@ -1,9 +1,7 @@
-
-
 import React from 'react';
-import TransactionDisplay from '../components/TransactionDisplay.jsx';
+import AccountDisplay from '../components/AccountDisplay.jsx';
 
-export default class Address extends React.Component {
+export default class Account extends React.Component {
 
     constructor(props) {
 
@@ -12,8 +10,11 @@ export default class Address extends React.Component {
         this._link = this.props.linkClient;
 
         this.state = {
-            addressHash: null,
-            searchQuery: ''
+            searchQuery: '',
+            account: {
+                hash : null,
+                balance : 0
+            }
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -36,27 +37,40 @@ export default class Address extends React.Component {
     doSearch(ev) {
 
         ev.preventDefault();
-        this.props.history.push('/address/' + this.state.searchQuery);
+        this.props.history.push('/account/' + this.state.searchQuery);
 
     }
 
     componentDidMount() {
 
-        if (!this.props.match.params || !this.props.match.params.addresshash) {
+        if (!this.props.match.params || !this.props.match.params.accounthash) {
 
-            // No address ID supplied. Just show the search input.
+            // No account ID supplied. Just show the search input.
             return;
 
         }
 
-        const addressHash = this.props.match.params.addressid;
+        const accountHash = this.props.match.params.accounthash;
 
         // Search query has been defined as part of the url. Do search.
-        const address = this._link.getTransaction(addressHash);
+        let balance = 0;
+
+        try {
+
+            balance = this._link.getAccountBalance(accountHash);
+
+        } catch (err) {
+
+            console.error(err);
+            return;
+        }
+
         this.setState(
             {
-                addressHash: addressHash,
-                address: address
+                account: {
+                    hash: accountHash,
+                    balance: balance
+                }
             }
         );
 
@@ -64,13 +78,13 @@ export default class Address extends React.Component {
 
     render() {
 
-        if (!this.state.addressHash) {
+        if (!this.state.account.hash) {
 
-            return <div className="address-search">
+            return <div className="account-search">
 
-                <h3>Address search</h3>
+                <h3>Account search</h3>
 
-                <div className="address-search-container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div className="account-search-container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
                     <form onSubmit={this.doSearch}>
 
@@ -100,8 +114,8 @@ export default class Address extends React.Component {
 
         }
 
-        // TransactionID supplied - show address
-        return <AddressDisplay address={this.state.address}/>
+        // Show Account balance
+        return <AccountDisplay account={this.state.account}/>
 
     }
 

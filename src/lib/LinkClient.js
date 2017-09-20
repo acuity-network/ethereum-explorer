@@ -107,21 +107,16 @@ export default class LinkClient {
 
     }
 
-    getTransactions(transactionsToRetrieve = 20){
-
-        // Only way to retrieve transactions atm is to traverse blocks
-        const BLOCKS_TO_SEARCH = 200;
-
-
-
-
-    }
-
     getTransaction(transactionHash){
 
         return this._linkSearch.getTransaction(transactionHash);
 
     }
 
+    getAccountBalance(accountHash){
+
+        return this._linkSearch.getBalance(accountHash);
+
+    }
 
 }

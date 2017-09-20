@@ -28,14 +28,18 @@ export default class TransactionDisplay extends React.Component {
                         <tr>
                             <td colSpan="2" className="text-center">
                                 <label className="transaction-from-to-label">from</label>
-                                <a href className="transaction-from-to-value">{this.props.transaction.from}</a>
+                                <Link to={'/account/' + this.props.transaction.from}>
+                                    {this.props.transaction.from}
+                                </Link>
                             </td>
                         </tr>
 
                         <tr>
                             <td colSpan="2" className="text-center">
                                 <label className="transaction-from-to-label">to</label>
-                                <a href className="transaction-from-to-value">{this.props.transaction.to}</a>
+                                <Link to={'/account/' + this.props.transaction.to}>
+                                    {this.props.transaction.to}
+                                </Link>
                             </td>
                         </tr>
 

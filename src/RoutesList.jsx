@@ -6,7 +6,7 @@ import Home from './pages/Home.jsx';
 import Search from './pages/Search.jsx';
 import Block from './pages/Block.jsx';
 import Transaction from './pages/Transaction.jsx';
-import Address from './pages/Address.jsx';
+import Account from './pages/Account.jsx';
 
 export default class RoutesList extends React.Component{
 
@@ -48,9 +48,9 @@ export default class RoutesList extends React.Component{
             );
         };
 
-        const AddressPage = (props) => {
+        const AccountPage = (props) => {
             return (
-                <Address
+                <Account
                     linkClient={this.props.linkClient}
                     {...props}
                 />
@@ -67,8 +67,8 @@ export default class RoutesList extends React.Component{
                 <Route exact path="/block" component={BlockPage} />
                 <Route exact path="/transaction/:transactionid" component={TransactionPage} />
                 <Route exact path="/transaction" component={TransactionPage} />
-                <Route exact path="/address/:addresshash" component={AddressPage} />
-                <Route exact path="/address" component={AddressPage} />
+                <Route exact path="/account/:accounthash" component={AccountPage} />
+                <Route exact path="/account" component={AccountPage} />
                 <Route exact path="/search" render={SearchPage} />
                 <Route path="/search/:searchquery" render={SearchPage} />
 
