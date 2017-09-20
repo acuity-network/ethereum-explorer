@@ -40,27 +40,27 @@ export default class Transaction extends React.Component {
 
     }
 
-    // componentDidMount() {
-    //
-    //     if (!this.props.match.params || !this.props.match.params.transactionid) {
-    //
-    //         // No transaction ID supplied. Just show the search input.
-    //         return;
-    //
-    //     }
-    //
-    //     const transactionID = this.props.match.params.transactionid;
-    //
-    //     // Search query has been defined as part of the url. Do search.
-    //     const transaction = this._link.getTransaction(transactionID);
-    //     this.setState(
-    //         {
-    //             transactionID: transactionID,
-    //             transaction: transaction
-    //         }
-    //     );
-    //
-    // }
+    componentDidMount() {
+
+        if (!this.props.match.params || !this.props.match.params.transactionid) {
+
+            // No transaction ID supplied. Just show the search input.
+            return;
+
+        }
+
+        const transactionID = this.props.match.params.transactionid;
+
+        // Search query has been defined as part of the url. Do search.
+        const transaction = this._link.getTransaction(transactionID);
+        this.setState(
+            {
+                transactionID: transactionID,
+                transaction: transaction
+            }
+        );
+
+    }
 
     render() {
 
