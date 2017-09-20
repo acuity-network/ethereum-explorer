@@ -69,11 +69,11 @@ export default class Transaction extends React.Component {
 
                 <h3>Transaction search</h3>
 
-                <div className="search-container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div className="transaction-search-container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
                     <form onSubmit={this.doSearch}>
 
-                        <div className="form-inline">
+                        <div className="form-group">
 
                             <input
                                 onChange={this.handleInputChange}
@@ -83,7 +83,11 @@ export default class Transaction extends React.Component {
                                 className="form-control"
                                 placeholder="Transaction hash"/>
 
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                        </div>
+
+                        <div className="form-group">
+
+                            <button type="submit" className="btn btn-primary pull-right">Submit</button>
 
                         </div>
 
