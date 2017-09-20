@@ -3,7 +3,7 @@
 import React from 'react';
 import TransactionDisplay from '../components/TransactionDisplay.jsx';
 
-export default class Transaction extends React.Component {
+export default class Address extends React.Component {
 
     constructor(props) {
 
@@ -12,7 +12,7 @@ export default class Transaction extends React.Component {
         this._link = this.props.linkClient;
 
         this.state = {
-            transactionID: null,
+            addressHash: null,
             searchQuery: ''
         };
 
@@ -36,27 +36,27 @@ export default class Transaction extends React.Component {
     doSearch(ev) {
 
         ev.preventDefault();
-        this.props.history.push('/transaction/' + this.state.searchQuery);
+        this.props.history.push('/address/' + this.state.searchQuery);
 
     }
 
     componentDidMount() {
 
-        if (!this.props.match.params || !this.props.match.params.transactionid) {
+        if (!this.props.match.params || !this.props.match.params.addresshash) {
 
-            // No transaction ID supplied. Just show the search input.
+            // No address ID supplied. Just show the search input.
             return;
 
         }
 
-        const transactionID = this.props.match.params.transactionid;
+        const addressHash = this.props.match.params.addressid;
 
         // Search query has been defined as part of the url. Do search.
-        const transaction = this._link.getTransaction(transactionID);
+        const address = this._link.getTransaction(addressHash);
         this.setState(
             {
-                transactionID: transactionID,
-                transaction: transaction
+                addressHash: addressHash,
+                address: address
             }
         );
 
@@ -64,13 +64,13 @@ export default class Transaction extends React.Component {
 
     render() {
 
-        if (!this.state.transactionID) {
+        if (!this.state.addressHash) {
 
-            return <div className="transaction-search">
+            return <div className="address-search">
 
-                <h3>Transaction search</h3>
+                <h3>Address search</h3>
 
-                <div className="transaction-search-container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div className="address-search-container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
                     <form onSubmit={this.doSearch}>
 
@@ -82,7 +82,7 @@ export default class Transaction extends React.Component {
                                 name="searchQuery"
                                 type="text"
                                 className="form-control"
-                                placeholder="Transaction hash"/>
+                                placeholder="Address hash"/>
 
                         </div>
 
@@ -100,8 +100,8 @@ export default class Transaction extends React.Component {
 
         }
 
-        // TransactionID supplied - show transaction
-        return <TransactionDisplay transaction={this.state.transaction}/>
+        // TransactionID supplied - show address
+        return <AddressDisplay address={this.state.address}/>
 
     }
 
