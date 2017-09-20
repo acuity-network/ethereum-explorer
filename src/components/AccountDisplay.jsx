@@ -17,18 +17,23 @@ export default class AccountDisplay extends React.Component {
         return (
             <div className="address-display">
 
-                <h3>Account Balance</h3>
+                <h3>Account Information</h3>
 
                 <div className="col-md-6 col-md-offset-3">
 
-                    <div className="form-group">
+                    <table className="table">
 
-                        <label>{this.props.account.hash}</label>
+                        <tr>
+                            <td><label>Address</label></td>
+                            <td>{this.props.account.hash}</td>
+                        </tr>
 
+                        <tr>
+                            <td><label>Balance</label></td>
+                            <td>{this.props.account.balance}</td>
+                        </tr>
 
-                        <label>{this.props.account.balance}</label>
-
-                    </div>
+                    </table>
 
                 </div>
 
