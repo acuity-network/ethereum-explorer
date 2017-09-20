@@ -36,16 +36,41 @@ export default class TransactionDisplay extends React.Component{
 
                 </div>
 
-                <div className="table-responsive">
+                <table className="table">
 
-                    <table className="table">
+                    <tbody>
 
-                        <tbody></tbody>
+                    <tr>
+                        <td><label>Block number</label></td><td>{this.props.transaction.blockNumber}</td>
+                    </tr>
 
-                    </table>
+                    <tr>
+                        <td><label>Value</label></td><td>{this.props.transaction.value.toString()}</td>
+                    </tr>
 
-                </div>
+                    <tr>
+                        <td><label>Gas price</label></td><td>{this.props.transaction.gasPrice.toString()}</td>
+                    </tr>
 
+                    <tr>
+                        <td><label></label></td><td></td>
+                    </tr>
+
+                    <tr>
+                        <td><label></label></td><td></td>
+                    </tr>
+
+                    <tr>
+                        <td><label></label></td><td></td>
+                    </tr>
+
+                    <tr>
+                        <td></td><td></td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
 
             </div>
         )
