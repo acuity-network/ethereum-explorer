@@ -107,7 +107,11 @@ export default class LinkClient {
 
     }
 
-    getTransactions(){
+    getTransactions(transactionsToRetrieve = 20){
+
+        // Only way to retrieve transactions atm is to traverse blocks
+        const BLOCKS_TO_SEARCH = 200;
+
 
 
 

@@ -22,7 +22,7 @@ export default class LinkSystemStats{
         return this._syncing ? 'synchronising' : 'synced';
     }
 
-    getLatestBlocks(){
+    getLatestBlocks(blocksToRetrieve = 9){
 
         if(typeof this._syncing === 'undefined'){
             throw new Error('Must call system state to get latest blocks');
@@ -30,7 +30,7 @@ export default class LinkSystemStats{
 
         this._latestBlocks = [];
 
-        for(let i = this._latestBlockNumber - 9; i <= this._latestBlockNumber; i++ ){
+        for(let i = this._latestBlockNumber - blocksToRetrieve; i <= this._latestBlockNumber; i++ ){
 
             this._latestBlocks.push(this._web3.eth.getBlock(i));
 
