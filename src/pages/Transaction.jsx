@@ -12,55 +12,81 @@ export default class Transaction extends React.Component {
         this._link = this.props.linkClient;
 
         this.state = {
-            showMulti : false
-        }
+            transactionID: null,
+            searchQuery : ''
+        };
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.doSearch = this.doSearch.bind(this);
 
     }
 
-    componentDidMount() {
+    handleInputChange(event) {
 
-        if (!this.props.match.params || !this.props.match.params.transactionid) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
 
-           // No transaction ID supplied. Just show the search input.
-           this.setState({transactionID: null});
-           return;
-
-        }
-
-        const transactionID = this.props.match.params.transactionid;
-
-        // Search query has been defined as part of the url. Do search.
-        const transaction = this._link.getTransaction(transactionID);
-        this.setState(
-            {
-                transactionID : transactionID,
-                transaction: transaction
-            }
-        );
+        this.setState({
+            [name]: value
+        });
 
     }
+
+    doSearch(ev) {
+
+        ev.preventDefault();
+        this.props.history.push('/transaction/' + this.state.searchQuery);
+
+    }
+
+    // componentDidMount() {
+    //
+    //     if (!this.props.match.params || !this.props.match.params.transactionid) {
+    //
+    //         // No transaction ID supplied. Just show the search input.
+    //         return;
+    //
+    //     }
+    //
+    //     const transactionID = this.props.match.params.transactionid;
+    //
+    //     // Search query has been defined as part of the url. Do search.
+    //     const transaction = this._link.getTransaction(transactionID);
+    //     this.setState(
+    //         {
+    //             transactionID: transactionID,
+    //             transaction: transaction
+    //         }
+    //     );
+    //
+    // }
 
     render() {
 
-        if(!this.state.transactionID){
+        if (!this.state.transactionID) {
 
             return <div className="transaction-search col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
                 <h3>Transaction search</h3>
 
-                <div className="form-group">
+                <form onSubmit={this.doSearch()}>
 
-                    
+                    <div className="form-inline">
 
-                    <label>Transaction ID</label>
-                    <input type="text" class="form-control" />
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <input
+                            onChange={this.handleInputChange}
+                            value={this.state.searchQuery}
+                            name="searchQuery"
+                            type="text"
+                            className="form-control"
+                            placeholder="Transaction hash"/>
 
+                        <button type="submit" class="btn btn-primary">Submit</button>
 
+                    </div>
 
-                </div>
-
-
+                </form>
 
             </div>;
 
