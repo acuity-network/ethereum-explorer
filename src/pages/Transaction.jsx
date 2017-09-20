@@ -1,7 +1,6 @@
 import React from 'react';
 
 import TransactionDisplay from '../components/TransactionDisplay.jsx';
-import MultiTransactionDisplay from '../components/MultiTransactionDisplay.jsx';
 
 export default class Transaction extends React.Component {
 
@@ -13,7 +12,7 @@ export default class Transaction extends React.Component {
 
         this.state = {
             transactionID: null,
-            searchQuery : ''
+            searchQuery: ''
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -66,27 +65,31 @@ export default class Transaction extends React.Component {
 
         if (!this.state.transactionID) {
 
-            return <div className="transaction-search col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            return <div className="transaction-search">
 
                 <h3>Transaction search</h3>
 
-                <form onSubmit={this.doSearch}>
+                <div className="search-container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-                    <div className="form-inline">
+                    <form onSubmit={this.doSearch}>
 
-                        <input
-                            onChange={this.handleInputChange}
-                            value={this.state.searchQuery}
-                            name="searchQuery"
-                            type="text"
-                            className="form-control"
-                            placeholder="Transaction hash"/>
+                        <div className="form-inline">
 
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                            <input
+                                onChange={this.handleInputChange}
+                                value={this.state.searchQuery}
+                                name="searchQuery"
+                                type="text"
+                                className="form-control"
+                                placeholder="Transaction hash"/>
 
-                    </div>
+                            <button type="submit" className="btn btn-primary">Submit</button>
 
-                </form>
+                        </div>
+
+                    </form>
+
+                </div>
 
             </div>;
 
