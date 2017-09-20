@@ -1,4 +1,6 @@
+
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class TransactionDisplay extends React.Component {
 
@@ -39,7 +41,9 @@ export default class TransactionDisplay extends React.Component {
 
                         <tr>
                             <td><label>Block number</label></td>
-                            <td>{this.props.transaction.blockNumber}</td>
+                            <td>
+                                <Link to={'/block/' + this.props.transaction.blockNumber}>{this.props.transaction.blockNumber}</Link>
+                            </td>
                         </tr>
 
                         <tr>
