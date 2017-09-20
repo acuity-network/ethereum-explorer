@@ -1,9 +1,8 @@
-
 import React from 'react';
 
-export default class TransactionDisplay extends React.Component{
+export default class TransactionDisplay extends React.Component {
 
-    constructor(props){
+    constructor(props) {
 
         super(props);
 
@@ -11,66 +10,53 @@ export default class TransactionDisplay extends React.Component{
 
     }
 
-    render(){
+    render() {
 
-        return(
-            <div className="transaction-display col-md-6 col-md-offset-3">
+        return (
+            <div className="transaction-display">
 
-                <h2 className="text-center">Transaction Information</h2>
+                <h3>Transaction Information</h3>
 
-                <div className="transaction-from-to">
+                <div className="col-md-6 col-md-offset-3">
 
-                    <div className="text-center">
+                    <table className="table">
 
-                        <label className="transaction-from-to-label">from</label>
-                        <a href className="transaction-from-to-value">{this.props.transaction.from}</a>
+                        <tbody>
 
-                    </div>
+                        <tr>
+                            <td colSpan="2" className="text-center">
+                                <label className="transaction-from-to-label">from</label>
+                                <a href className="transaction-from-to-value">{this.props.transaction.from}</a>
+                            </td>
+                        </tr>
 
-                    <div className="text-center">
+                        <tr>
+                            <td colSpan="2" className="text-center">
+                                <label className="transaction-from-to-label">to</label>
+                                <a href className="transaction-from-to-value">{this.props.transaction.to}</a>
+                            </td>
+                        </tr>
 
-                        <label className="transaction-from-to-label">to</label>
-                        <a href className="transaction-from-to-value">{this.props.transaction.from}</a>
+                        <tr>
+                            <td><label>Block number</label></td>
+                            <td>{this.props.transaction.blockNumber}</td>
+                        </tr>
 
-                    </div>
+                        <tr>
+                            <td><label>Value</label></td>
+                            <td>{this.props.transaction.value.toString(10)}</td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Gas price</label></td>
+                            <td>{this.props.transaction.gasPrice.toString(10)}</td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
 
                 </div>
-
-                <table className="table">
-
-                    <tbody>
-
-                    <tr>
-                        <td><label>Block number</label></td><td>{this.props.transaction.blockNumber}</td>
-                    </tr>
-
-                    <tr>
-                        <td><label>Value</label></td><td>{this.props.transaction.value.toString()}</td>
-                    </tr>
-
-                    <tr>
-                        <td><label>Gas price</label></td><td>{this.props.transaction.gasPrice.toString()}</td>
-                    </tr>
-
-                    <tr>
-                        <td><label></label></td><td></td>
-                    </tr>
-
-                    <tr>
-                        <td><label></label></td><td></td>
-                    </tr>
-
-                    <tr>
-                        <td><label></label></td><td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td><td></td>
-                    </tr>
-
-                    </tbody>
-
-                </table>
 
             </div>
         )
