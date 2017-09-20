@@ -1,6 +1,52 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+class TransactionsList extends React.Component{
+
+    constructor(props){
+
+        super(props);
+
+        console.log(this.props.transactions);
+
+    }
+
+    render(){
+
+        return (
+
+            <div className="transactions-list col-md-8 col-md-offset-2">
+
+                <h4>Transaction list</h4>
+
+                <table className="table">
+
+                    <tbody>
+
+                    { this.props.transactions.map(
+                            (transaction, i)=>
+                            <tr key={i}>
+                                <td>
+                                    <Link to={ '/transaction/' + transaction}>
+                                        {transaction}
+                                    </Link>
+                                </td>
+                            </tr>
+                        )
+                    }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        )
+
+    }
+
+}
+
 export default class BlockDisplay extends React.Component {
 
     constructor(props) {
@@ -122,6 +168,9 @@ export default class BlockDisplay extends React.Component {
                     </div>
 
                 </div>
+
+                { this.state.block.transactions.length && <TransactionsList transactions={this.state.block.transactions} /> }
+
 
             </div>
         )
