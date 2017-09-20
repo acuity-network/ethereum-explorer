@@ -17,11 +17,13 @@ export default class BlockDisplay extends React.Component{
     render(){
 
         return(
-            <div className="block-display col-md-8 col-md-offset-2">
+            <div className="block-display">
 
-                <h2>Block Information</h2>
+                <h3>Block Information</h3>
 
-                <div className="table-responsive">
+                <div className="col-md-8 col-md-offset-2">
+
+                    <div className="table-responsive">
 
                     <table className="table">
 
@@ -115,6 +117,8 @@ export default class BlockDisplay extends React.Component{
                         </tbody>
 
                     </table>
+
+                </div>
 
                 </div>
 
