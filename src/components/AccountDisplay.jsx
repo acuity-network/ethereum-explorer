@@ -23,6 +23,8 @@ export default class AccountDisplay extends React.Component {
 
                     <table className="table">
 
+                        <tbody>
+
                         <tr>
                             <td><label>Address</label></td>
                             <td>{this.props.account.hash}</td>
@@ -32,6 +34,8 @@ export default class AccountDisplay extends React.Component {
                             <td><label>Balance</label></td>
                             <td>{this.props.account.balance}</td>
                         </tr>
+
+                        </tbody>
 
                     </table>
 
