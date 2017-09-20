@@ -45,7 +45,7 @@ class Header extends React.Component {
 
                 <div className="header-block-right">
 
-                    <span className="link-name">Ethereum Explorer</span>
+                    <h1 className="link-name">Ethereum block explorer</h1>
 
                     <form className="item-search" onSubmit={this.doSearch}>
 
