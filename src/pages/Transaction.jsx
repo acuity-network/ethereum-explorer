@@ -2,7 +2,6 @@
 
 import React from 'react';
 import TransactionDisplay from '../components/TransactionDisplay.jsx';
-import web3 from 'web3';
 
 export default class Transaction extends React.Component {
 
