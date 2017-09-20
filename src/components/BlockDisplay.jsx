@@ -1,22 +1,22 @@
-
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export default class BlockDisplay extends React.Component{
+export default class BlockDisplay extends React.Component {
 
-    constructor(props){
+    constructor(props) {
 
         super(props);
 
         this.state = {
-            block : this.props.block
+            block: this.props.block
         }
 
     }
 
-    render(){
+    render() {
 
-        return(
+        return (
+
             <div className="block-display">
 
                 <h3>Block Information</h3>
@@ -25,103 +25,103 @@ export default class BlockDisplay extends React.Component{
 
                     <div className="table-responsive">
 
-                    <table className="table">
+                        <table className="table">
 
-                        <tbody>
+                            <tbody>
 
-                        <tr>
-                            <td>
-                                <label>number</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.number}</span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <label>number</label>
+                                </td>
+                                <td>
+                                    <span className="block-display-value">{this.state.block.number}</span>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                <label>hash</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.hash}</span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <label>hash</label>
+                                </td>
+                                <td>
+                                    <span className="block-display-value">{this.state.block.hash}</span>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                <label>parent hash</label>
-                            </td>
-                            <td>
+                            <tr>
+                                <td>
+                                    <label>parent hash</label>
+                                </td>
+                                <td>
 
-                                <Link to={'/block/' + this.state.block.parentHash}>
-                                    <span className="block-display-value">{this.state.block.parentHash}</span>
-                                </Link>
+                                    <Link to={'/block/' + this.state.block.parentHash}>
+                                        <span className="block-display-value">{this.state.block.parentHash}</span>
+                                    </Link>
 
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                <label>gas limit</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.gasLimit}</span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <label>gas limit</label>
+                                </td>
+                                <td>
+                                    <span className="block-display-value">{this.state.block.gasLimit}</span>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                <label>gas used</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.gasUsed}</span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <label>gas used</label>
+                                </td>
+                                <td>
+                                    <span className="block-display-value">{this.state.block.gasUsed}</span>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                <label>miner</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.miner}</span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <label>miner</label>
+                                </td>
+                                <td>
+                                    <span className="block-display-value">{this.state.block.miner}</span>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                <label>difficulty</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.difficulty.toString(10)}</span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <label>difficulty</label>
+                                </td>
+                                <td>
+                                    <span
+                                        className="block-display-value">{this.state.block.difficulty.toString(10)}</span>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                <label>transactions</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.transactions.length}</span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <label>transactions</label>
+                                </td>
+                                <td>
+                                    <span className="block-display-value">{this.state.block.transactions.length}</span>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                <label>uncles</label>
-                            </td>
-                            <td>
-                                <span className="block-display-value">{this.state.block.uncles.length}</span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <label>uncles</label>
+                                </td>
+                                <td>
+                                    <span className="block-display-value">{this.state.block.uncles.length}</span>
+                                </td>
+                            </tr>
 
-                        </tbody>
+                            </tbody>
 
-                    </table>
+                        </table>
+
+                    </div>
 
                 </div>
-
-                </div>
-
 
             </div>
         )
