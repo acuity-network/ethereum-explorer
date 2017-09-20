@@ -1,10 +1,11 @@
 
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export default class MultiBlockDisplay extends React.Component{
+export default class MultiBlockDisplay extends React.Component {
 
-    constructor(props){
+    constructor(props) {
 
         super(props);
 
@@ -12,67 +13,71 @@ export default class MultiBlockDisplay extends React.Component{
         const blocks = this.props.blocks.reverse();
 
         this.state = {
-            blocks : this.props.blocks
+            blocks: this.props.blocks
         }
 
     }
 
-    render(){
+    render() {
 
 
-        return(
+        return (
 
-            <div className="multi-block-display col-md-8 col-md-offset-2">
+            <div className="multi-block-display">
 
-                <h2>Latest Blocks Information</h2>
+                <h3>Latest blocks information</h3>
 
-                <div className="table-responsive">
+                <div className="col-md-8 col-md-offset-2">
 
-                    <table className="table table-striped">
+                    <div className="table-responsive">
 
-                        <thead>
-                        <tr>
-                            <th>Number</th>
-                            <th>Difficulty</th>
-                            <th>Gas Limit</th>
-                            <th>Gas Used</th>
-                            <th>Uncles</th>
-                            <th>Transactions</th>
-                        </tr>
-                        </thead>
+                        <table className="table table-striped">
 
-                        <tbody>
-                        {
-                            this.state.blocks.map((block, i)=>
-                                <tr key={i}>
-                                    <td>
+                            <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Difficulty</th>
+                                <th>Gas Limit</th>
+                                <th>Gas Used</th>
+                                <th>Uncles</th>
+                                <th>Transactions</th>
+                            </tr>
+                            </thead>
 
-                                        <Link to={'/block/' + block.number}>
-                                            {block.number}
-                                        </Link>
+                            <tbody>
+                            {
+                                this.state.blocks.map((block, i) =>
+                                    <tr key={i}>
+                                        <td>
 
-                                    </td>
-                                    <td>
-                                        {block.difficulty.toString()}
-                                    </td>
-                                    <td>
-                                        {block.gasLimit}
-                                    </td>
-                                    <td>
-                                        {block.gasUsed}
-                                    </td>
-                                    <td>
-                                        {block.uncles.length}
-                                    </td>
-                                    <td>
-                                        {block.transactions.length}
-                                    </td>
-                                </tr>
-                            )
-                        }
-                        </tbody>
+                                            <Link to={'/block/' + block.number}>
+                                                {block.number}
+                                            </Link>
 
-                    </table>
+                                        </td>
+                                        <td>
+                                            {block.difficulty.toString()}
+                                        </td>
+                                        <td>
+                                            {block.gasLimit}
+                                        </td>
+                                        <td>
+                                            {block.gasUsed}
+                                        </td>
+                                        <td>
+                                            {block.uncles.length}
+                                        </td>
+                                        <td>
+                                            {block.transactions.length}
+                                        </td>
+                                    </tr>
+                                )
+                            }
+                            </tbody>
+
+                        </table>
+
+                    </div>
 
                 </div>
 
