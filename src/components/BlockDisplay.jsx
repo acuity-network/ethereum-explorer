@@ -58,10 +58,6 @@ export default class BlockDisplay extends React.Component {
 
         super(props);
 
-        this.state = {
-            block: this.props.block
-        }
-
     }
 
     render() {
@@ -85,7 +81,7 @@ export default class BlockDisplay extends React.Component {
                                     <label>number</label>
                                 </td>
                                 <td>
-                                    <span className="block-display-value">{this.state.block.number}</span>
+                                    <span className="block-display-value">{this.props.block.number}</span>
                                 </td>
                             </tr>
 
@@ -94,7 +90,7 @@ export default class BlockDisplay extends React.Component {
                                     <label>hash</label>
                                 </td>
                                 <td>
-                                    <span className="block-display-value">{this.state.block.hash}</span>
+                                    <span className="block-display-value">{this.props.block.hash}</span>
                                 </td>
                             </tr>
 
@@ -104,8 +100,8 @@ export default class BlockDisplay extends React.Component {
                                 </td>
                                 <td>
 
-                                    <Link to={'/block/' + this.state.block.parentHash}>
-                                        <span className="block-display-value">{this.state.block.parentHash}</span>
+                                    <Link to={'/block/' + this.props.block.parentHash}>
+                                        <span className="block-display-value">{this.props.block.parentHash}</span>
                                     </Link>
 
                                 </td>
@@ -116,7 +112,7 @@ export default class BlockDisplay extends React.Component {
                                     <label>gas limit</label>
                                 </td>
                                 <td>
-                                    <span className="block-display-value">{this.state.block.gasLimit}</span>
+                                    <span className="block-display-value">{this.props.block.gasLimit}</span>
                                 </td>
                             </tr>
 
@@ -125,7 +121,7 @@ export default class BlockDisplay extends React.Component {
                                     <label>gas used</label>
                                 </td>
                                 <td>
-                                    <span className="block-display-value">{this.state.block.gasUsed}</span>
+                                    <span className="block-display-value">{this.props.block.gasUsed}</span>
                                 </td>
                             </tr>
 
@@ -134,7 +130,7 @@ export default class BlockDisplay extends React.Component {
                                     <label>miner</label>
                                 </td>
                                 <td>
-                                    <span className="block-display-value">{this.state.block.miner}</span>
+                                    <span className="block-display-value">{this.props.block.miner}</span>
                                 </td>
                             </tr>
 
@@ -144,7 +140,7 @@ export default class BlockDisplay extends React.Component {
                                 </td>
                                 <td>
                                     <span
-                                        className="block-display-value">{this.state.block.difficulty.toString(10)}</span>
+                                        className="block-display-value">{this.props.block.difficulty.toString(10)}</span>
                                 </td>
                             </tr>
 
@@ -153,7 +149,7 @@ export default class BlockDisplay extends React.Component {
                                     <label>transactions</label>
                                 </td>
                                 <td>
-                                    <span className="block-display-value">{this.state.block.transactions.length}</span>
+                                    <span className="block-display-value">{this.props.block.transactions.length}</span>
                                 </td>
                             </tr>
 
@@ -162,7 +158,7 @@ export default class BlockDisplay extends React.Component {
                                     <label>uncles</label>
                                 </td>
                                 <td>
-                                    <span className="block-display-value">{this.state.block.uncles.length}</span>
+                                    <span className="block-display-value">{this.props.block.uncles.length}</span>
                                 </td>
                             </tr>
 
@@ -174,8 +170,8 @@ export default class BlockDisplay extends React.Component {
 
                 </div>
 
-                { this.state.block.transactions.length &&
-                <TransactionsList transactions={this.state.block.transactions}/> }
+                { this.props.block.transactions.length &&
+                <TransactionsList transactions={this.props.block.transactions}/> }
 
 
             </div>
