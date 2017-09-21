@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-class TransactionsList extends React.Component{
+class TransactionsList extends React.Component {
 
-    constructor(props){
+    constructor(props) {
 
         super(props);
 
@@ -11,33 +11,38 @@ class TransactionsList extends React.Component{
 
     }
 
-    render(){
+    render() {
 
         return (
 
-            <div className="transactions-list col-md-8 col-md-offset-2">
+            <div className="transactions-list row">
 
                 <h4>Transaction list</h4>
 
-                <table className="table">
+                <div className=" col-md-8 col-md-offset-2 table-responsive">
 
-                    <tbody>
+                    <table className="table">
 
-                    { this.props.transactions.map(
-                            (transaction, i)=>
-                            <tr key={i}>
-                                <td>
-                                    <Link to={ '/transaction/' + transaction}>
-                                        {transaction}
-                                    </Link>
-                                </td>
-                            </tr>
-                        )
-                    }
+                        <tbody>
 
-                    </tbody>
+                        {
+                            this.props.transactions.map(
+                                (transaction, i) =>
+                                    <tr key={i}>
+                                        <td>
+                                            <Link to={ '/transaction/' + transaction}>
+                                                {transaction}
+                                            </Link>
+                                        </td>
+                                    </tr>
+                            )
+                        }
 
-                </table>
+                        </tbody>
+
+                    </table>
+
+                </div>
 
             </div>
 
@@ -67,9 +72,9 @@ export default class BlockDisplay extends React.Component {
 
                 <h3>Block Information</h3>
 
-                <div className="col-md-8 col-md-offset-2">
+                <div className="row">
 
-                    <div className="table-responsive">
+                    <div className="col-md-8 col-md-offset-2 table-responsive">
 
                         <table className="table">
 
@@ -169,7 +174,8 @@ export default class BlockDisplay extends React.Component {
 
                 </div>
 
-                { this.state.block.transactions.length && <TransactionsList transactions={this.state.block.transactions} /> }
+                { this.state.block.transactions.length &&
+                <TransactionsList transactions={this.state.block.transactions}/> }
 
 
             </div>
