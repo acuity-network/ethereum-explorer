@@ -195,8 +195,6 @@ export default class LinkSystemStats{
             }
         );
 
-        // return this._web3.net.peerCount;
-
     }
 
     getSync(){
@@ -213,7 +211,9 @@ export default class LinkSystemStats{
                 this._web3.eth.getGasPrice(
                     (error, gasPrice)=>{
 
-                        return parseInt(gasPrice.toString()) / 1000000000;
+                        if(error) return reject(error);
+
+                        resolve(parseInt(gasPrice.toString()) / 1000000000);
 
                     }
                 )
@@ -223,7 +223,7 @@ export default class LinkSystemStats{
 
     }
 
-    getHashRate(){  // The api applies only to mining nodes. Calculate from block difficulty and times
+    getHashRate(){
 
         if(!this._difficultySum || !this._totalTime){
             throw new Error('Need difficulty and block time to calculate hashrate');

@@ -31,7 +31,7 @@ export default class Home extends React.Component {
             }
         };
 
-        this.getStats();
+        this.state = {};
 
     }
 
@@ -81,26 +81,42 @@ export default class Home extends React.Component {
 
     getStats() {
 
-        let systemStats = {};
+        let systemStats = {},
+            charts = {};
 
-        try{
+        this._link.getSystemStats().then(
+            (stats)=>{
 
-            systemStats = this._link.getSystemStats();
+                systemStats = stats;
+                charts = this.getChartData(systemStats);
+                this.setState({systemStats: systemStats, charts: charts});
 
-        }catch(err){
+            },
+            (error)=>{
 
-            alert('Sorry but there was an error with this request: ' + err.message);
-            return;
-        }
+                alert(error.message);
 
-        const charts = this.getChartData(systemStats);
+            }
+        );
 
-        if (!this.state || !this.state.systemStats) {
-            this.state = {systemStats: systemStats, charts: charts};
-            return;
-        }
+        // try{
+        //
+        //     systemStats = this._link.getSystemStats();
+        //
+        // }catch(err){
+        //
+        //     alert('Sorry but there was an error with this request: ' + err.message);
+        //     return;
+        // }
+        //
+        // const charts = this.getChartData(systemStats);
+        //
+        // if (!this.state || !this.state.systemStats) {
+        //     this.state = {systemStats: systemStats, charts: charts};
+        //     return;
+        // }
 
-        this.setState({systemStats: systemStats, charts: charts});
+
 
     }
 
@@ -108,6 +124,8 @@ export default class Home extends React.Component {
 
         // Get initial ten blocks
         this.getStats();
+
+        return;
 
         // Watch the network for new blocks. Add the new block to the list of
         // latest blocks when it's created and update the stats + UI.
@@ -140,6 +158,14 @@ export default class Home extends React.Component {
     }
 
     render() {
+
+        if(!this.state.systemStats){
+
+            return <div className="home-page content-page">
+                        <div className="alert alert-info">Please wait...</div>
+                   </div>
+
+        }
 
         return (
 
