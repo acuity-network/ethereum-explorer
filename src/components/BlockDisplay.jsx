@@ -7,8 +7,6 @@ class TransactionsList extends React.Component {
 
         super(props);
 
-        console.log(this.props.transactions);
-
     }
 
     render() {
@@ -17,9 +15,9 @@ class TransactionsList extends React.Component {
 
             <div className="transactions-list row">
 
-                <h4>Transaction list</h4>
-
                 <div className=" col-md-8 col-md-offset-2 table-responsive">
+
+                    <h4>Transaction list</h4>
 
                     <table className="table">
 
@@ -130,7 +128,9 @@ export default class BlockDisplay extends React.Component {
                                     <label>miner</label>
                                 </td>
                                 <td>
-                                    <span className="block-display-value">{this.props.block.miner}</span>
+                                    <Link to={'/account/' + this.props.block.miner}>
+                                        <span className="block-display-value">{this.props.block.miner}</span>
+                                    </Link>
                                 </td>
                             </tr>
 
@@ -172,7 +172,6 @@ export default class BlockDisplay extends React.Component {
 
                 { this.props.block.transactions.length &&
                 <TransactionsList transactions={this.props.block.transactions}/> }
-
 
             </div>
         )
