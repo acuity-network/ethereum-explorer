@@ -116,7 +116,11 @@ export default class LinkSystemStats{
 
     }
 
-    getBlockTimes(){
+    getBlockTimes(latestBlocks = null){
+
+        if(latestBlocks){
+            this._latestBlocks = latestBlocks;
+        }
 
         if(!this._latestBlocks || !this._latestBlocks.length){
             throw new Error('Must retrieve latest blocks to determine block times');
@@ -151,7 +155,11 @@ export default class LinkSystemStats{
 
     }
 
-    getAverageDifficulty(){
+    getAverageDifficulty(latestBlocks = null){
+
+        if(latestBlocks){
+            this._latestBlocks = latestBlocks;
+        }
 
         if(!this._latestBlocks || !this._latestBlocks.length){
             throw new Error('Must retrieve latest blocks to determine difficulty');
@@ -199,8 +207,19 @@ export default class LinkSystemStats{
 
     getGasPrice(){
 
-        const wei = this._web3.eth.gasPrice.toString();
-        return wei / 1000000000; // Return value in Gwei.
+        return new Promise(
+            (resolve, reject)=>{
+
+                this._web3.eth.getGasPrice(
+                    (error, gasPrice)=>{
+
+                        return parseInt(gasPrice.toString()) / 1000000000;
+
+                    }
+                )
+
+            }
+        );
 
     }
 

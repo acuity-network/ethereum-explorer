@@ -86,7 +86,8 @@ export default class LinkClient {
 
                         const promises = [
                             this._systemStats.getLatestBlocks(),
-                            this._systemStats.getPeerCount()
+                            this._systemStats.getPeerCount(),
+                            this._systemStats.getGasPrice()
                         ];
 
                         Promise.all(promises).then(
@@ -94,6 +95,11 @@ export default class LinkClient {
 
                                 stats.latestBlocks = results[0];
                                 stats.peerCount = results[1];
+                                stats.gasPrice = results[2];
+
+                                stats.difficulty = this._systemStats.getAverageDifficulty(stats.latestBlocks);
+                                stats.blockTimes = this._systemStats.getBlockTimes(stats.latestBlocks);
+                                stats.hashRate = this._systemStats.getHashRate();
 
                                 console.log(stats);
                                 resolve(stats);
@@ -102,6 +108,7 @@ export default class LinkClient {
                         ).catch(
                             (error)=>{
 
+                                console.error(error.message);
                                 reject(error);
 
                             }
