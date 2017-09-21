@@ -134,17 +134,8 @@ export default class LinkClient {
 
         this._systemStats.setLatestBlocks(latestBlocks);
 
-        return {
-
-            state : this._systemStats.getState(),
-            latestBlocks: latestBlocks,
-            peerCount: this._systemStats.getPeerCount(),
-            difficulty: this._systemStats.getAverageDifficulty(),
-            blockTimes: this._systemStats.getBlockTimes(),
-            gasPrice: this._systemStats.getGasPrice(),
-            hashRate: this._systemStats.getHashRate()
-
-        }
+        // Returns promise
+        return this.getSystemStats(latestBlocks);
 
     }
 

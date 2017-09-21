@@ -134,7 +134,17 @@ export default class Home extends React.Component {
                 ).then(
                     (latestBlocks)=>{
 
+                        this._link.updateBlocks(latestBlocks).then(
+                            (stats)=>{
 
+                                // Update the stats
+                                const charts = this.getChartData(stats);
+
+                                // Update the UI
+                                this.setState({systemStats: stats, charts: charts});
+
+                            }
+                        )
 
                     }
                 )
@@ -142,12 +152,7 @@ export default class Home extends React.Component {
                 // Get the new block
 
 
-                // Update the stats
-                const systemStats = this._link.updateBlocks(latestBlocks),
-                    charts = this.getChartData(systemStats);
 
-                // Update the UI
-                this.setState({systemStats: systemStats, charts: charts});
 
             },
             (error)=>{
