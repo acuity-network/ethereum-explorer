@@ -2,6 +2,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+import LinkSearch from '../lib/LinkSearch';
+
 class Header extends React.Component {
 
     constructor(props){
@@ -47,7 +49,7 @@ class Header extends React.Component {
 
                     <h1 className="link-name">Ethereum block explorer</h1>
 
-                    <form className="item-search" onSubmit={this.doSearch}>
+                    <form style={{display:'none'}} className="item-search" onSubmit={this.doSearch}>
 
                         <input
                             onChange={this.handleInputChange}

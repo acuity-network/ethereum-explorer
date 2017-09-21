@@ -29,10 +29,6 @@ export default class LinkSearch{
 
     getTransaction(hash){
 
-        // if(hash.length < 64 || !this._web3.isAddress(hash)){
-        //     throw new Error('Malformed hash request');
-        // }
-
         return this._web3.eth.getTransaction(hash);
 
     }
