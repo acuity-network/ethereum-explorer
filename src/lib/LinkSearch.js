@@ -11,19 +11,21 @@ export default class LinkSearch{
 
     getBlock(hashOrNumber){
 
-        let block = {};
+        return new Promise(
+            (resolve, reject)=>{
 
-        try{
+                this._web3.eth.getBlock(hashOrNumber,
+                    (error, block)=>{
 
-            block = this._web3.eth.getBlock(hashOrNumber);
+                        if(error) return reject(error);
 
-        }catch(err){
+                        resolve(block);
 
-            return null;
+                    }
+                )
 
-        }
-
-        return block;
+            }
+        );
 
     }
 

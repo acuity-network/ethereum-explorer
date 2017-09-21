@@ -71,7 +71,11 @@ export default class LinkClient {
 
     }
 
-    getSystemStats() {
+    // Numerous asynchronous calls to various APIs. getLatestBlocks will initially
+    // make an asynchronous call to retrieve each individual block (I'm not aware of any other way
+    // of doing that with the web3 api. You can avoid that if you supply an existing list of
+    // latestBlocks via the param.
+    getSystemStats(latestBlocks = null) {
 
         // Must get system state before everything else.
         return new Promise(
@@ -84,24 +88,31 @@ export default class LinkClient {
 
                         stats.state = state;
 
-                        const promises = [
-                            this._systemStats.getLatestBlocks(),
+                        let promises = [
                             this._systemStats.getPeerCount(),
                             this._systemStats.getGasPrice()
                         ];
 
+                        if(!latestBlocks){
+                            promises.push(this._systemStats.getLatestBlocks());
+                        }
+
                         Promise.all(promises).then(
                             (results)=>{
 
-                                stats.latestBlocks = results[0];
-                                stats.peerCount = results[1];
-                                stats.gasPrice = results[2];
+                                stats.peerCount = results[0];
+                                stats.gasPrice = results[1];
+
+                                if(!latestBlocks){
+                                    stats.latestBlocks = results[2];
+                                }else{
+                                    stats.latestBlocks = latestBlocks;
+                                }
 
                                 stats.difficulty = this._systemStats.getAverageDifficulty(stats.latestBlocks);
                                 stats.blockTimes = this._systemStats.getBlockTimes(stats.latestBlocks);
                                 stats.hashRate = this._systemStats.getHashRate();
 
-                                console.log(stats);
                                 resolve(stats);
 
                             }
@@ -150,18 +161,21 @@ export default class LinkClient {
 
     getBlock(hashOrNumber){
 
+        // Returns promise
         return this._linkSearch.getBlock(hashOrNumber);
 
     }
 
     getTransaction(transactionHash){
 
+        // Returns promise
         return this._linkSearch.getTransaction(transactionHash);
 
     }
 
     getAccountBalance(accountHash){
 
+        // Returns promise
         return this._linkSearch.getBalance(accountHash);
 
     }

@@ -103,6 +103,8 @@ export default class Home extends React.Component {
 
     componentDidMount() {
 
+        const that = this;
+
         // Get initial ten blocks
         this.getStats();
 
@@ -111,13 +113,34 @@ export default class Home extends React.Component {
         this._link.watchNetwork(
             (blockHash)=>{
 
-                // Get the new block
-                let newBlock = this._link.getBlock(blockHash),
-                    latestBlocks = this.state.systemStats.latestBlocks;
+                that._link.getBlock(blockHash).then(
+                    (newBlock)=>{
 
-                // Only allow ten blocks in the list
-                latestBlocks.shift();
-                latestBlocks.push(newBlock);
+                        let latestBlocks = that.state.systemStats.latestBlocks;
+
+                        // Only allow ten blocks in the list
+                        latestBlocks.shift();
+                        latestBlocks.push(newBlock);
+
+                        return latestBlocks;
+
+                    }
+                ).catch(
+                    (error)=>{
+
+                        alert(error.message);
+
+                    }
+                ).then(
+                    (latestBlocks)=>{
+
+
+
+                    }
+                )
+
+                // Get the new block
+
 
                 // Update the stats
                 const systemStats = this._link.updateBlocks(latestBlocks),
