@@ -14,12 +14,65 @@ export default class LinkSystemStats{
     // current block as the latest block).
     getState(){
 
-        const syncing = this._web3.eth.syncing;
+        const that = this;
 
-        this._syncing = !!syncing;
-        this._latestBlockNumber = !syncing ? this._web3.eth.blockNumber : syncing.currentBlock;
+        return new Promise(
+            (resolve, reject)=>{
 
-        return this._syncing ? 'synchronising' : 'synced';
+                that._web3.eth.getSyncing(
+                    (error, result)=>{
+
+                        if(error) return reject(error);
+
+                        if(result){  // Still syncing
+
+                            this._syncing = true;
+                            this._latestBlockNumber = result.currentBlock;
+
+                            return resolve('synchronising');
+                        }
+
+                        this._syncing = false;
+
+                        // Synchronised. Need to get the latest block number.
+                        that._web3.eth.getBlockNumber(
+                            (err, blockNumber)=>{
+
+                                if(err) return reject(err);
+
+                                this._latestBlockNumber = blockNumber;
+                                resolve('synchronised');
+
+                            }
+                        )
+
+                    }
+                )
+
+            }
+        );
+
+
+    }
+
+    getBlock(blockID){
+
+        return new Promise(
+            (resolve, reject)=>{
+
+                this._web3.eth.getBlock(blockID,
+                    (error, block)=>{
+
+                        if(error) return reject(error);
+
+                        resolve(block);
+
+                    }
+                )
+
+            }
+        )
+
     }
 
     getLatestBlocks(blocksToRetrieve = 9){
@@ -32,7 +85,7 @@ export default class LinkSystemStats{
 
         for(let i = this._latestBlockNumber - blocksToRetrieve; i <= this._latestBlockNumber; i++ ){
 
-            this._latestBlocks.push(this._web3.eth.getBlock(i));
+            this._latestBlocks.push();
 
         }
 

@@ -73,17 +73,39 @@ export default class LinkClient {
 
     getSystemStats() {
 
-        const stats = {
-            state : this._systemStats.getState(),
-            latestBlocks: this._systemStats.getLatestBlocks(),
-            peerCount: this._systemStats.getPeerCount(),
-            difficulty: this._systemStats.getAverageDifficulty(),
-            blockTimes: this._systemStats.getBlockTimes(),
-            gasPrice: this._systemStats.getGasPrice(),
-            hashRate: this._systemStats.getHashRate()
-        };
+        const promises = [
+            this._systemStats.getState()
+        ];
 
-        return stats;
+        Promise.all(promises).then(
+            (...results)=>{
+
+
+                console.log(...results);
+
+                return {};
+
+            }
+        ).catch(
+            (error)=>{
+
+                throw new Error(error);
+
+            }
+        );
+
+
+        // const stats = {
+        //     state : this._systemStats.getState(),
+        //     latestBlocks: this._systemStats.getLatestBlocks(),
+        //     peerCount: this._systemStats.getPeerCount(),
+        //     difficulty: this._systemStats.getAverageDifficulty(),
+        //     blockTimes: this._systemStats.getBlockTimes(),
+        //     gasPrice: this._systemStats.getGasPrice(),
+        //     hashRate: this._systemStats.getHashRate()
+        // };
+
+        // return stats;
 
     }
 
