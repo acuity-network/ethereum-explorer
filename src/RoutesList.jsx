@@ -19,6 +19,16 @@ export default class RoutesList extends React.Component {
 
     render() {
 
+        if (!this.props.linkClient) {
+
+            return (
+                <div className="page-content">
+                    <div className="alert alert-danger">Could not connect to network</div>
+                </div>
+            )
+
+        }
+
         // Send all props to the child - this method is needed to send query params from react-router
         const SearchPage = (props) => {
             return (

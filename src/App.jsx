@@ -19,8 +19,18 @@ export default class App extends React.Component {
 
         super();
 
-        // Start the application, link the LinkClient to the given node
-        this.linkClient = new LinkClient(config.node_uri);
+        this.linkClient = null;
+
+        try{
+
+            // The LinkClient will try various methods of connecting to a blockchain network
+            this.linkClient = new LinkClient(config.node_uri);
+
+        }catch(err){
+
+            console.error(err.message);
+
+        }
 
     }
 

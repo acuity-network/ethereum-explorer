@@ -1,20 +1,33 @@
-// Core library for interactions with the LINK blockchain
+// Core library for interactions with Ethereum blockchains
 
 import LinkHTTPConnector from './LinkConnector.js';
 import  LinkSystemStats from './LinkSystemStats.js';
 import LinkSearch from './LinkSearch.js';
 
+
 export default class LinkClient {
 
-    constructor(nodeUri) {
+    // Connect to a network via Metamask (https://metamask.io/) or explicit URI stored in localstorage.
+    // Explicit URI overrides Metamask.
+    constructor() {
 
-        if (!nodeUri) {
-            throw new Error('No blockchain node specified');
+        this._web3 = null;
+
+        const nodeUri = localStorage.getItem('link-node-uri');
+
+        if (nodeUri) {
+
+            this._web3 = LinkHTTPConnector.connect(nodeUri);
+
+        }else{
+
+
+
         }
 
-        this._web3 = LinkHTTPConnector.connect(nodeUri);
 
-        if(!this._web3.isConnected()){
+
+        if(!this._web3 || !this._web3.isConnected()){
             throw new Error('Not connected to network');
         }
 

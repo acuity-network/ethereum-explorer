@@ -30,12 +30,38 @@ export default class LinkHTTPConnector extends LinkConnectorBase{
     static connect(nodeURI){
 
         try{
+
             return new Web3(new Web3.providers.HttpProvider(nodeURI));
+
         }catch(err){
+
             console.error(err.message);
             return null;
+
         }
 
+
+    }
+
+}
+
+export class LinkMetamaskConnector extends  LinkConnectorBase{
+
+    constructor(){
+
+        super();
+
+    }
+
+    static connect(){
+
+        try{
+
+
+
+        }catch(err){
+
+        }
 
     }
 
