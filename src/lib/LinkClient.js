@@ -85,13 +85,15 @@ export default class LinkClient {
                         stats.state = state;
 
                         const promises = [
-                            this._systemStats.getLatestBlocks()
+                            this._systemStats.getLatestBlocks(),
+                            this._systemStats.getPeerCount()
                         ];
 
                         Promise.all(promises).then(
                             (results)=>{
 
                                 stats.latestBlocks = results[0];
+                                stats.peerCount = results[1];
 
                                 console.log(stats);
                                 resolve(stats);

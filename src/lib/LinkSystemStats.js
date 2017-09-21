@@ -171,7 +171,23 @@ export default class LinkSystemStats{
 
     getPeerCount(){
 
-        return this._web3.net.peerCount;
+        return new Promise(
+            (resolve, reject)=>{
+
+                this._web3.net.getPeerCount(
+                    (error, peerCount)=>{
+
+                        if(error) return reject(error);
+
+                        resolve(peerCount);
+
+                    }
+                )
+
+            }
+        );
+
+        // return this._web3.net.peerCount;
 
     }
 
