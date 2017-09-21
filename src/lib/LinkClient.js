@@ -13,19 +13,19 @@ export default class LinkClient {
 
         this._web3 = null;
 
+        // If a node URI has been specified, it will be stored in localstorage
         const nodeUri = localStorage.getItem('link-node-uri');
 
         if (nodeUri) {
 
             this._web3 = LinkHTTPConnector.connect(nodeUri);
 
-        }else{
+        // No direct connection specified. Try metamask.
+        }else if( typeof web3 !== 'undefined'){
 
-
+            this._web3 = web3;
 
         }
-
-
 
         if(!this._web3 || !this._web3.isConnected()){
             throw new Error('Not connected to network');
