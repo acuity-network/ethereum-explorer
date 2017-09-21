@@ -119,20 +119,6 @@ export default class LinkClient {
 
             }
         )
-
-
-        // const stats = {
-        //     state : this._systemStats.getState(),
-        //     latestBlocks: this._systemStats.getLatestBlocks(),
-        //     peerCount: this._systemStats.getPeerCount(),
-        //     difficulty: this._systemStats.getAverageDifficulty(),
-        //     blockTimes: this._systemStats.getBlockTimes(),
-        //     gasPrice: this._systemStats.getGasPrice(),
-        //     hashRate: this._systemStats.getHashRate()
-        // };
-
-        // return stats;
-
     }
 
     // Add a new block to the latestBlocks list and update the stats

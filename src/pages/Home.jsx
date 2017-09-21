@@ -99,33 +99,12 @@ export default class Home extends React.Component {
             }
         );
 
-        // try{
-        //
-        //     systemStats = this._link.getSystemStats();
-        //
-        // }catch(err){
-        //
-        //     alert('Sorry but there was an error with this request: ' + err.message);
-        //     return;
-        // }
-        //
-        // const charts = this.getChartData(systemStats);
-        //
-        // if (!this.state || !this.state.systemStats) {
-        //     this.state = {systemStats: systemStats, charts: charts};
-        //     return;
-        // }
-
-
-
     }
 
     componentDidMount() {
 
         // Get initial ten blocks
         this.getStats();
-
-        return;
 
         // Watch the network for new blocks. Add the new block to the list of
         // latest blocks when it's created and update the stats + UI.
