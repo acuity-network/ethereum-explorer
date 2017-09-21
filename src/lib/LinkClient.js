@@ -73,26 +73,43 @@ export default class LinkClient {
 
     getSystemStats() {
 
-        const promises = [
-            this._systemStats.getState()
-        ];
+        // Must get system state before everything else.
+        return new Promise(
+            (resolve, reject)=>{
 
-        Promise.all(promises).then(
-            (...results)=>{
+                let stats = {};
 
+                this._systemStats.getState().then(
+                    (state)=>{
 
-                console.log(...results);
+                        stats.state = state;
 
-                return {};
+                        const promises = [
+                            this._systemStats.getLatestBlocks()
+                        ];
+
+                        Promise.all(promises).then(
+                            (results)=>{
+
+                                stats.latestBlocks = results[0];
+
+                                console.log(stats);
+                                resolve(stats);
+
+                            }
+                        ).catch(
+                            (error)=>{
+
+                                reject(error);
+
+                            }
+                        );
+
+                    }
+                );
 
             }
-        ).catch(
-            (error)=>{
-
-                throw new Error(error);
-
-            }
-        );
+        )
 
 
         // const stats = {

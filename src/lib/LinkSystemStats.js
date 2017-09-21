@@ -52,7 +52,6 @@ export default class LinkSystemStats{
             }
         );
 
-
     }
 
     getBlock(blockID){
@@ -81,15 +80,33 @@ export default class LinkSystemStats{
             throw new Error('Must call system state to get latest blocks');
         }
 
-        this._latestBlocks = [];
+        let promises = [];
 
         for(let i = this._latestBlockNumber - blocksToRetrieve; i <= this._latestBlockNumber; i++ ){
 
-            this._latestBlocks.push();
+            promises.push(this.getBlock(i));
 
         }
 
-        return this._latestBlocks;
+        return new Promise(
+            (resolve, reject)=>{
+
+                Promise.all(promises).then(
+                    (latestBlocks)=>{
+
+                        resolve(latestBlocks);
+
+                    }
+                ).catch(
+                    (error)=>{
+
+                        reject(error);
+
+                    }
+                );
+
+            }
+        );
 
     }
 
