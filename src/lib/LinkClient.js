@@ -103,11 +103,7 @@ export default class LinkClient {
                                 stats.peerCount = results[0];
                                 stats.gasPrice = results[1];
 
-                                if(!latestBlocks){
-                                    stats.latestBlocks = results[2];
-                                }else{
-                                    stats.latestBlocks = latestBlocks;
-                                }
+                                stats.latestBlocks = latestBlocks || results[2];
 
                                 stats.difficulty = this._systemStats.getAverageDifficulty(stats.latestBlocks);
                                 stats.blockTimes = this._systemStats.getBlockTimes(stats.latestBlocks);
