@@ -148,12 +148,6 @@ export default class Home extends React.Component {
 
                     }
                 )
-
-                // Get the new block
-
-
-
-
             },
             (error)=>{
 
