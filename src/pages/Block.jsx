@@ -26,14 +26,20 @@ export default class Block extends React.Component {
             const blockID = this.props.match.params.blockid;
 
             // Search query has been defined as part of the url. Do search.
-            const block = this._link.getBlock(blockID);
-            this.setState(
-                {
-                    blockID : blockID,
-                    block: block,
-                    showMulti : false
+            this._link.getBlock(blockID).then(
+                (block)=>{
+
+                    this.setState(
+                        {
+                            blockID : blockID,
+                            block: block,
+                            showMulti : false
+                        }
+                    );
+
                 }
             );
+
 
         } else {
 
