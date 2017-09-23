@@ -84,29 +84,30 @@ export default class Home extends React.Component {
         let systemStats = {},
             charts = {};
 
-        this._link.getSystemStats().then(
-            (stats)=>{
+        return new Promise(
+            (resolve, reject)=>{
 
-                systemStats = stats;
-                charts = this.getChartData(systemStats);
-                this.setState({systemStats: systemStats, charts: charts});
+                this._link.getSystemStats().then(
+                    (stats)=>{
 
-            },
-            (error)=>{
+                        systemStats = stats;
+                        charts = this.getChartData(systemStats);
+                        this.setState({systemStats: systemStats, charts: charts});
 
-                alert(error.message);
+                    },
+                    (error)=>{
+
+                        alert(error.message);
+
+                    }
+                );
 
             }
         );
 
     }
 
-    componentDidMount() {
-
-        const that = this;
-
-        // Get initial ten blocks
-        this.getStats();
+    watchNetwork(){
 
         // Watch the network for new blocks. Add the new block to the list of
         // latest blocks when it's created and update the stats + UI.
@@ -155,6 +156,23 @@ export default class Home extends React.Component {
 
             }
         );
+
+    };
+
+    componentDidMount() {
+
+        const that = this;
+
+        // Get initial ten blocks
+        this.getStats().then(
+            ()=>{
+
+                this.watchNetwork();
+
+            }
+        )
+
+
 
     }
 

@@ -9,12 +9,12 @@ export default class LinkClient {
 
     // Connect to a network via Metamask (https://metamask.io/) or explicit URI stored in localstorage.
     // Explicit URI overrides Metamask.
-    constructor() {
+    constructor(nodeURI = null) {
 
         this._web3 = null;
 
         // If a node URI has been specified, it will be stored in localstorage
-        const nodeUri = localStorage.getItem('link-node-uri');
+        const nodeUri = nodeURI || localStorage.getItem('link-node-uri');
 
         if (nodeUri) {
 

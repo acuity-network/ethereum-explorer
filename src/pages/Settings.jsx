@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 export default class Settings extends React.Component {
@@ -12,7 +13,7 @@ export default class Settings extends React.Component {
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.setURI = this.setURI.bind(this);
+        this.updateURI = this.updateURI.bind(this);
 
     }
 
@@ -28,9 +29,11 @@ export default class Settings extends React.Component {
 
     }
 
-    setURI(ev) {
+    updateURI(ev) {
 
         ev.preventDefault();
+
+        // Set the
 
     }
 
@@ -72,6 +75,32 @@ export default class Settings extends React.Component {
                         <span className="btn btn-sm btn-success">available</span> :
                         <span className="btn btn-sm btn-danger">not available</span>
                 }
+
+            </div>
+
+            <div className="col-md-8 col-md-offset-2">
+
+                <form onSubmit={this.updateURI}>
+
+                    <div className="form-group">
+
+                        <label>Blockchain node URI</label>
+
+                        <input type="text"
+                               className="form-control"
+                               placeholder="http://localhost:8545"
+                               onChange={this.handleInputChange}
+                               value={this.state.nodeURI} />
+
+                    </div>
+
+                    <div className="form-group">
+
+                        <button type="submit" className="btn btn-primary pull-right">Submit</button>
+
+                    </div>
+
+                </form>
 
             </div>
 
