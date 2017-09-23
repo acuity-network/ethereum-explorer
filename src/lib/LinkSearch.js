@@ -41,9 +41,24 @@ export default class LinkSearch{
             return;
         }
 
-        // Balance is returned as big number.
-        const balance = this._web3.fromWei(this._web3.eth.getBalance(accountHash), "ether");
-        return Number(balance.toString());
+        return new Promise(
+            (resolve, reject)=>{
+
+                this._web3.eth.getBalance(accountHash,
+                    (error, balance)=>{
+
+                        if(error) return reject(error);
+
+                        // Balance is returned as big number.
+                        const newBalance = this._web3.fromWei(balance, "ether");
+                        resolve(newBalance.toString(10));
+
+                    }
+                )
+
+            }
+        );
+
 
     }
 

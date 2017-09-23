@@ -52,27 +52,21 @@ export default class Account extends React.Component {
 
         const accountHash = this.props.match.params.accounthash;
 
-        // Search query has been defined as part of the url. Do search.
-        let balance = 0;
+        this._link.getAccountBalance(accountHash).then(
+            (balance)=>{
 
-        try {
+                this.setState(
+                    {
+                        account: {
+                            hash: accountHash,
+                            balance: balance
+                        }
+                    }
+                );
 
-            balance = this._link.getAccountBalance(accountHash);
-
-        } catch (err) {
-
-            console.error(err);
-            return;
-        }
-
-        this.setState(
-            {
-                account: {
-                    hash: accountHash,
-                    balance: balance
-                }
             }
         );
+
 
     }
 
