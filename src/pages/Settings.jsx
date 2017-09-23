@@ -6,6 +6,11 @@ export default class Settings extends React.Component {
 
         super();
 
+        this.state = {
+            metaMaskExists : (typeof web3 !== 'undefined'),
+            nodeUri : localStorage.getItem('link-node-uri')
+        };
+
         this.handleInputChange = this.handleInputChange.bind(this);
         this.setURI = this.setURI.bind(this);
 
@@ -49,15 +54,21 @@ export default class Settings extends React.Component {
                     </li>
                     <li>
                         Metamask. See <a href="https://metamask.io/" target="_blank">https://metamask.io/</a>. Metamask is a clever
-                        Chrome and Firefox browser extension that manages blockchain connections and accounts for individual blockchains
-                        (including test and localhost nodes). You will need to install and enable Metamask for this option to work.
+                        Chrome and Firefox browser extension that manages blockchain connections and accounts for established and
+                        individual blockchains. You will need to install and enable Metamask for this option to work.
                     </li>
                 </ul>
 
+                <p>
+                    If a blockchain node URI is specified, this will override any Metamask connections
+                </p>
 
             </div>
 
-            <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div className="col-md-8 col-md-offset-2">
+
+                
+
 
             </div>
 
