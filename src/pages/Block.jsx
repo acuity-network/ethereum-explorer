@@ -38,12 +38,16 @@ export default class Block extends React.Component {
         } else {
 
             // Get last ten blocks
-            const blocks = this._link.getBlocks();
+            this._link.getBlocks().then(
+                (latestBlocks)=>{
 
-            this.setState(
-                {
-                    blocks: blocks,
-                    showMulti : true
+                    this.setState(
+                        {
+                            blocks: latestBlocks,
+                            showMulti : true
+                        }
+                    );
+
                 }
             );
 

@@ -141,8 +141,28 @@ export default class LinkClient {
 
     getBlocks(){
 
-        this._systemStats.getState();
-        return this._systemStats.getLatestBlocks();
+        return new Promise(
+            (resolve, reject)=>{
+
+                this._systemStats.getState().then(
+                    ()=>{
+
+                        this._systemStats.getLatestBlocks().then(
+                            (latestBlocks)=>{
+
+                                resolve(latestBlocks);
+
+                            }
+                        )
+
+                    }
+                )
+
+            }
+        );
+
+
+
 
     }
 
