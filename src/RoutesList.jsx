@@ -1,5 +1,6 @@
 import React from 'react'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Home from './pages/Home.jsx';
 import Search from './pages/Search.jsx';
@@ -8,7 +9,7 @@ import Transaction from './pages/Transaction.jsx';
 import Account from './pages/Account.jsx';
 import Settings from './pages/Settings.jsx';
 
-export default class RoutesList extends React.Component {
+export class RoutesList extends React.Component {
 
     constructor(props) {
 
@@ -20,7 +21,7 @@ export default class RoutesList extends React.Component {
 
     render() {
 
-        if (!this.props.linkClient) {
+        if (!this.props.linkClient && this.props.location.pathname !== '/settings') {
 
             return (
                 <div className="page-content">
@@ -29,16 +30,6 @@ export default class RoutesList extends React.Component {
             )
 
         }
-
-        // Send all props to the child - this method is needed to send query params from react-router
-        const SearchPage = (props) => {
-            return (
-                <Search
-                    linkClient={this.props.linkClient}
-                    {...props}
-                />
-            );
-        };
 
         const BlockPage = (props) => {
             return (
@@ -94,3 +85,5 @@ export default class RoutesList extends React.Component {
     }
 
 }
+
+export default withRouter(RoutesList);

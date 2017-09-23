@@ -70,7 +70,7 @@ export default class Settings extends React.Component {
                 {
                     this.state.metaMaskExists ?
                         <span className="btn btn-sm btn-success">available</span> :
-                        <span className="btn btn-sm btn-success">not available</span>
+                        <span className="btn btn-sm btn-danger">not available</span>
                 }
 
             </div>
