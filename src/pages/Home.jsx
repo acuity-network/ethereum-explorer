@@ -93,11 +93,12 @@ export default class Home extends React.Component {
                         systemStats = stats;
                         charts = this.getChartData(systemStats);
                         this.setState({systemStats: systemStats, charts: charts});
+                        resolve();
 
                     },
                     (error)=>{
 
-                        alert(error.message);
+                        reject(error);
 
                     }
                 );
@@ -114,10 +115,10 @@ export default class Home extends React.Component {
         this._link.watchNetwork(
             (blockHash)=>{
 
-                that._link.getBlock(blockHash).then(
+                this._link.getBlock(blockHash).then(
                     (newBlock)=>{
 
-                        let latestBlocks = that.state.systemStats.latestBlocks;
+                        let latestBlocks = this.state.systemStats.latestBlocks;
 
                         // Only allow ten blocks in the list
                         latestBlocks.shift();

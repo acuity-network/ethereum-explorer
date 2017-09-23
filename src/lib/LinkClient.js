@@ -1,7 +1,7 @@
 // Core library for interactions with Ethereum blockchains
 
 import LinkHTTPConnector from './LinkConnector.js';
-import  LinkSystemStats from './LinkSystemStats.js';
+import LinkSystemStats from './LinkSystemStats.js';
 import LinkSearch from './LinkSearch.js';
 
 
