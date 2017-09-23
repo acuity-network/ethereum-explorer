@@ -8,8 +8,6 @@ export default class AccountDisplay extends React.Component {
 
         super(props);
 
-        console.log(this.props.account);
-
     }
 
     render() {
