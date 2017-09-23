@@ -36,6 +36,33 @@ export default class Settings extends React.Component {
 
         ev.preventDefault();
 
+        // If the input is blank, the uri is being deleted
+        if(!this.state.nodeUri){
+
+            localStorage.removeItem('link-node-uri');
+
+            this.setState(
+                {
+                    uriUpdated : true
+                }
+            );
+
+
+            setTimeout(
+                ()=>{
+
+                    this.setState(
+                        { uriUpdated : false }
+                    )
+
+                }, 3000
+            );
+
+            return;
+
+        }
+
+
         // Test the connection
         const connection = LinkHTTPConnector.connect(this.state.nodeUri);
 
@@ -141,6 +168,10 @@ export default class Settings extends React.Component {
                                value={this.state.nodeUri} />
 
                     </div>
+
+                    <p className={ this.state.uriUpdated ? 'alert alert-info' : 'no-display'}>
+                        URI Updated
+                    </p>
 
                     <p className={ this.state.connectionGood ? 'alert alert-success' : 'no-display'}>
                         Connection to blockchain successful. <Link to="/">Click here</Link> to see system stats or use the left hand
