@@ -6,6 +6,7 @@ import Search from './pages/Search.jsx';
 import Block from './pages/Block.jsx';
 import Transaction from './pages/Transaction.jsx';
 import Account from './pages/Account.jsx';
+import Settings from './pages/Settings.jsx';
 
 export default class RoutesList extends React.Component {
 
@@ -80,8 +81,7 @@ export default class RoutesList extends React.Component {
                     <Route exact path="/transaction" component={TransactionPage}/>
                     <Route exact path="/account/:accounthash" component={AccountPage}/>
                     <Route exact path="/account" component={AccountPage}/>
-                    <Route exact path="/search" render={SearchPage}/>
-                    <Route path="/search/:searchquery" render={SearchPage}/>
+                    <Route exact path="/settings" component={Settings}/>
                     <Route render={() => <div className="alert alert-info">Sorry this page was not found</div> }/>
 
                 </Switch>

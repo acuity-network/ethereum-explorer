@@ -34,7 +34,7 @@ export default class Navleft extends React.Component{
                             </Link>
                         </li>
                         <li>
-                            <Link to="/">
+                            <Link to="/settings">
                                 <i className="fa fa-cog" aria-hidden="true"></i>
                             </Link>
                         </li>
