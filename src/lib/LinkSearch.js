@@ -31,18 +31,32 @@ export default class LinkSearch{
 
     getTransaction(hash){
 
-        return this._web3.eth.getTransaction(hash);
+        return new Promise(
+            (resolve, reject)=>{
+
+                this._web3.eth.getTransaction(hash,
+                    (error, transaction)=>{
+
+                        if(error) return reject(error);
+
+                        resolve(transaction);
+
+                    }
+                )
+
+            }
+        )
 
     }
 
     getBalance(accountHash){
 
-        if(!this._web3.isAddress(accountHash)){
-            return;
-        }
-
         return new Promise(
             (resolve, reject)=>{
+
+                if(!this._web3.isAddress(accountHash)){
+                    return reject(new Error('Invalid account hash'));
+                }
 
                 this._web3.eth.getBalance(accountHash,
                     (error, balance)=>{

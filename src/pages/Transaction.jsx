@@ -52,13 +52,19 @@ export default class Transaction extends React.Component {
         const transactionID = this.props.match.params.transactionid;
 
         // Search query has been defined as part of the url. Do search.
-        const transaction = this._link.getTransaction(transactionID);
-        this.setState(
-            {
-                transactionID: transactionID,
-                transaction: transaction
+        this._link.getTransaction(transactionID).then(
+            (transaction)=>{
+
+                this.setState(
+                    {
+                        transactionID: transactionID,
+                        transaction: transaction
+                    }
+                );
+
             }
         );
+
 
     }
 
