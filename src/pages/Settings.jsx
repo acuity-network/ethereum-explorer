@@ -1,6 +1,8 @@
 
 import React from 'react';
 
+import LinkHTTPConnector from '../lib/LinkConnector.js';
+
 export default class Settings extends React.Component {
 
     constructor() {
@@ -9,7 +11,7 @@ export default class Settings extends React.Component {
 
         this.state = {
             metaMaskExists : (typeof web3 !== 'undefined'),
-            nodeUri : localStorage.getItem('link-node-uri')
+            nodeUri : localStorage.getItem('link-node-uri') || ''
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -33,7 +35,18 @@ export default class Settings extends React.Component {
 
         ev.preventDefault();
 
-        // Set the
+        // Test the connection
+        const connection = LinkHTTPConnector.connect(this.state.nodeUri);
+
+        if(!connection){
+
+            this.setState(
+                {
+                    configBad : true
+                }
+            )
+
+        }
 
     }
 
@@ -84,15 +97,20 @@ export default class Settings extends React.Component {
 
                     <div className="form-group">
 
-                        <label>Blockchain node URI</label>
+                        <label>Blockchain node URI (leave blank if you want to use Metamask)</label>
 
                         <input type="text"
+                               name="nodeUri"
                                className="form-control"
                                placeholder="http://localhost:8545"
                                onChange={this.handleInputChange}
-                               value={this.state.nodeURI} />
+                               value={this.state.nodeUri} />
 
                     </div>
+
+                    <p className="alert alert-danger">
+                        Could not connect to a node with this URI. Generally the URI is wrong or CORS is not enabled for this node.
+                    </p>
 
                     <div className="form-group">
 

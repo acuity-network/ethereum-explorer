@@ -24,7 +24,7 @@ export default class App extends React.Component {
         try{
 
             // The LinkClient will try various methods of connecting to a blockchain network
-            this.linkClient = new LinkClient(config.node_uri);
+            this.linkClient = new LinkClient();
 
         }catch(err){
 

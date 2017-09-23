@@ -26,7 +26,7 @@ export class RoutesList extends React.Component {
                 <div className="page-content">
 
                     <div className="alert alert-danger">
-                        The explorer was unable to connect to any network. Please check your blockchain availability and client settings
+                        The explorer was unable to connect to any network. Please check your blockchain configuration and client settings
                         by <Link to="/settings">clicking here</Link>
                     </div>
 
