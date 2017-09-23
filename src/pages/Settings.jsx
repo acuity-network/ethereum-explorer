@@ -1,5 +1,6 @@
 
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import LinkHTTPConnector from '../lib/LinkConnector.js';
 
@@ -38,15 +39,48 @@ export default class Settings extends React.Component {
         // Test the connection
         const connection = LinkHTTPConnector.connect(this.state.nodeUri);
 
-        if(!connection){
+        if(!connection.isConnected()){
 
             this.setState(
                 {
                     configBad : true
                 }
-            )
+            );
+
+
+            setTimeout(
+                ()=>{
+
+                    this.setState(
+                        { configBad : false }
+                    )
+
+                }, 3000
+            );
+
+            return;
 
         }
+
+        // Config good. Store it and show notification.
+        localStorage.setItem('link-node-uri', this.state.nodeUri);
+
+        this.setState(
+            {
+                connectionGood : true
+            }
+        );
+
+        setTimeout(
+            ()=>{
+
+                this.setState(
+                    { connectionGood : false }
+                )
+
+            }, 3000
+        );
+
 
     }
 
@@ -108,8 +142,13 @@ export default class Settings extends React.Component {
 
                     </div>
 
-                    <p className="alert alert-danger">
-                        Could not connect to a node with this URI. Generally the URI is wrong or CORS is not enabled for this node.
+                    <p className={ this.state.connectionGood ? 'alert alert-success' : 'no-display'}>
+                        Connection to blockchain successful. <Link to="/">Click here</Link> to see system stats or use the left hand
+                        menu to view blocks, transactions or account balances.
+                    </p>
+
+                    <p className={ this.state.configBad ? 'alert alert-danger' : 'no-display'}>
+                        Could not connect to a node with this URI. Generally this is because the URI is wrong or CORS is not enabled for this node.
                     </p>
 
                     <div className="form-group">
