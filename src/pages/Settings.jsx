@@ -32,7 +32,6 @@ export default class Settings extends React.Component {
 
         ev.preventDefault();
 
-
     }
 
     render() {
@@ -65,10 +64,14 @@ export default class Settings extends React.Component {
 
             </div>
 
-            <div className="col-md-8 col-md-offset-2">
+            <div className="col-md-8 col-md-offset-2 metamask-exists">
 
-                
-
+                Metamask is &nbsp;
+                {
+                    this.state.metaMaskExists ?
+                        <span className="btn btn-sm btn-success">available</span> :
+                        <span className="btn btn-sm btn-success">not available</span>
+                }
 
             </div>
 
