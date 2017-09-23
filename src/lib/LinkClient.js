@@ -73,7 +73,7 @@ export default class LinkClient {
 
     // Numerous asynchronous calls to various APIs. getLatestBlocks will initially
     // make an asynchronous call to retrieve each individual block (I'm not aware of any other way
-    // of doing that with the web3 api. You can avoid that if you supply an existing list of
+    // of doing that with the web3 api). You can avoid that if you supply an existing list of
     // latestBlocks via the param.
     getSystemStats(latestBlocks = null) {
 
