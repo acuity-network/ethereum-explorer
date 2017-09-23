@@ -40,29 +40,6 @@ export default class LinkHTTPConnector extends LinkConnectorBase{
 
         }
 
-
-    }
-
-}
-
-export class LinkMetamaskConnector extends  LinkConnectorBase{
-
-    constructor(){
-
-        super();
-
-    }
-
-    static connect(){
-
-        try{
-
-
-
-        }catch(err){
-
-        }
-
     }
 
 }
