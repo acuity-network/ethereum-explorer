@@ -1,6 +1,5 @@
 import React from 'react'
-import {Route, Switch} from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import {Route, Switch, withRouter, Link} from 'react-router-dom';
 
 import Home from './pages/Home.jsx';
 import Search from './pages/Search.jsx';
@@ -25,7 +24,12 @@ export class RoutesList extends React.Component {
 
             return (
                 <div className="page-content">
-                    <div className="alert alert-danger">Could not connect to network</div>
+
+                    <div className="alert alert-danger">
+                        The explorer was unable to connect to any network. Please check your blockchain availability and client settings
+                        by <Link to="/settings">clicking here</Link>
+                    </div>
+
                 </div>
             )
 
