@@ -67,8 +67,6 @@ export default class Account extends React.Component {
             },
             (error)=>{
 
-                this.alertMessage = error.message;
-
                 this.setState(
                     {
                         alertMessage : error.message
@@ -126,8 +124,6 @@ export default class Account extends React.Component {
                     </form>
 
                     <div className="clearfix margin-bottom"></div>
-
-
 
                     <p className={ this.state.alertMessage ? 'alert alert-danger' : 'no-display'}>
                         Sorry but there was an error with this request: {this.state.alertMessage}
