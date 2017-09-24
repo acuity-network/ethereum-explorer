@@ -37,6 +37,11 @@ export default class Block extends React.Component {
                         }
                     );
 
+                },
+                (error)=>{
+
+                    console.error(error.message);
+
                 }
             );
 

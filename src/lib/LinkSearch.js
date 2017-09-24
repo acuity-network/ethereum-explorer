@@ -17,7 +17,7 @@ export default class LinkSearch{
                 this._web3.eth.getBlock(hashOrNumber,
                     (error, block)=>{
 
-                        if(error) return reject(error);
+                        if(error || !block) return reject(error ? error : 'block not found');
 
                         resolve(block);
 
