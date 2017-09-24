@@ -38,6 +38,44 @@ class Header extends React.Component {
 
                 console.log(result);
 
+                if(result.block){
+
+                    this.props.history.push('/block/' + this.state.searchQuery);
+                    return;
+                }
+
+                if(result.account){
+
+                    this.props.history.push('/account/' + this.state.searchQuery);
+                    return;
+                }
+
+                if(result.transaction){
+
+                    this.props.history.push('/transaction/' + this.state.searchQuery);
+                    return;
+                }
+
+                // No result
+                this.setState(
+                    {
+                        noresult : true,
+                        searchQuery: ''
+                    }
+                );
+
+                setTimeout(
+                    ()=>{
+
+                        this.setState(
+                            {
+                                noresult : false
+                            }
+                        )
+
+                    },3000
+                )
+
             },
             (error)=>{
 
@@ -74,6 +112,7 @@ class Header extends React.Component {
                                 placeholder="Search account / txn / block" />
 
                             <span className="cancel-search glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                            <span className={ this.state.noresult ? 'search-no-results alert alert-danger' : 'no-display' }>no result found</span>
 
                         </form>
 
