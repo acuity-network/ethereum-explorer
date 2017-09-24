@@ -111,7 +111,8 @@ class Header extends React.Component {
                                 className="form-control"
                                 placeholder="Search account / txn / block" />
 
-                            <span className="cancel-search glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                            <span onClick={()=>{ this.setState({searchQuery : ''}) }} className="cancel-search glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+
                             <span className={ this.state.noresult ? 'search-no-results alert alert-danger' : 'no-display' }>no result found</span>
 
                         </form>

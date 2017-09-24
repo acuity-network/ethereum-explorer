@@ -158,7 +158,7 @@ export default class LinkSystemStats{
     getAverageDifficulty(latestBlocks = null){
 
         if(latestBlocks){
-            this._latestBlocks = latestBlocks;
+            this._latestBlocks = latestBlocks.filter((block)=> block && block.difficulty );
         }
 
         if(!this._latestBlocks || !this._latestBlocks.length){
