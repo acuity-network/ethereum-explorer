@@ -61,17 +61,23 @@ class Header extends React.Component {
 
                     <h1 className="link-name">Ethereum block explorer</h1>
 
-                    <form className="item-search" onSubmit={this.doSearch}>
+                    <div className="item-search">
 
-                        <input
-                            onChange={this.handleInputChange}
-                            value={this.state.searchQuery}
-                            name="searchQuery"
-                            type="text"
-                            className="form-control"
-                            placeholder="Search account / txn / block" />
+                        <form onSubmit={this.doSearch}>
 
-                    </form>
+                            <input
+                                onChange={this.handleInputChange}
+                                value={this.state.searchQuery}
+                                name="searchQuery"
+                                type="text"
+                                className="form-control"
+                                placeholder="Search account / txn / block" />
+
+                            <span className="cancel-search glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+
+                        </form>
+
+                    </div>
 
                 </div>
 
