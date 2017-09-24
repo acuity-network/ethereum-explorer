@@ -42,7 +42,7 @@ export default class App extends React.Component {
 
                 <div className="site-content">
 
-                    <Header></Header>
+                    <Header linkClient={this.linkClient}></Header>
 
                     <div className="content-main">
 

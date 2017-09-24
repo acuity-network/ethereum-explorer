@@ -17,7 +17,7 @@ export default class LinkSearch{
                 this._web3.eth.getBlock(hashOrNumber,
                     (error, block)=>{
 
-                        if(error || !block) return reject(error ? error : 'block not found');
+                        if(error || !block) return resolve(null);
 
                         resolve(block);
 
@@ -34,10 +34,12 @@ export default class LinkSearch{
         return new Promise(
             (resolve, reject)=>{
 
+                if(hash.length < 64) return resolve(null);
+
                 this._web3.eth.getTransaction(hash,
                     (error, transaction)=>{
 
-                        if(error) return reject(error);
+                        if(error || !transaction) return resolve(null);
 
                         resolve(transaction);
 

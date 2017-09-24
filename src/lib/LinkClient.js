@@ -61,13 +61,38 @@ export default class LinkClient {
     // - A block
     doSearch(query){
 
-       const results = {
-           block : this._linkSearch.getBlock(query),
-           balance : this._linkSearch.getBalance(query),
-           transaction : this._linkSearch.getTransaction(query)
-       };
+        const promises = [
+            this._linkSearch.getBlock(query),
+            // this._linkSearch.getBalance(query),
+            this._linkSearch.getTransaction(query)
+        ];
 
-       return results;
+        return new Promise(
+            (resolve, reject)=>{
+
+                Promise.all(promises).then(
+                    (results)=>{
+
+                        resolve(
+                            {
+                                block : results[0],
+                                // account : results[1],
+                                transaction : results[1]
+                            }
+                        )
+
+                    }
+                ).catch(
+                    (error)=>{
+
+                        reject(error);
+
+                    }
+                )
+
+
+            }
+        )
 
     }
 

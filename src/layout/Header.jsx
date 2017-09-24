@@ -32,7 +32,19 @@ class Header extends React.Component {
     doSearch(ev){
 
         ev.preventDefault();
-        this.props.history.push('/search/' + this.state.searchQuery);
+
+        this.props.linkClient.doSearch(this.state.searchQuery).then(
+            (result)=>{
+
+                console.log(result);
+
+            },
+            (error)=>{
+
+                console.error(error);
+
+            }
+        )
 
     }
 
@@ -49,7 +61,7 @@ class Header extends React.Component {
 
                     <h1 className="link-name">Ethereum block explorer</h1>
 
-                    <form style={{display:'none'}} className="item-search" onSubmit={this.doSearch}>
+                    <form className="item-search" onSubmit={this.doSearch}>
 
                         <input
                             onChange={this.handleInputChange}
