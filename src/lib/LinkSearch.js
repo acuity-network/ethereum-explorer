@@ -57,13 +57,13 @@ export default class LinkSearch{
             (resolve, reject)=>{
 
                 if(!this._web3.isAddress(accountHash)){
-                    return reject(new Error('Invalid account hash'));
+                    return resolve(null);
                 }
 
                 this._web3.eth.getBalance(accountHash,
                     (error, balance)=>{
 
-                        if(error) return reject(error);
+                        if(error) return resolve(null);
 
                         // Balance is returned as big number.
                         const newBalance = this._web3.fromWei(balance, "ether");

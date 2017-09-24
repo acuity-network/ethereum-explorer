@@ -63,7 +63,7 @@ export default class LinkClient {
 
         const promises = [
             this._linkSearch.getBlock(query),
-            // this._linkSearch.getBalance(query),
+            this._linkSearch.getBalance(query),
             this._linkSearch.getTransaction(query)
         ];
 
@@ -76,8 +76,8 @@ export default class LinkClient {
                         resolve(
                             {
                                 block : results[0],
-                                // account : results[1],
-                                transaction : results[1]
+                                account : results[1],
+                                transaction : results[2]
                             }
                         )
 
