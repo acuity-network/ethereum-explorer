@@ -45,7 +45,7 @@ class TransactionsList extends React.Component {
                             this.transactions.map(
                                 (transaction, i) =>
                                     <tr key={i}>
-                                        <td>
+                                        <td className="text-center">
                                             <Link to={ '/transaction/' + transaction}>
                                                 <span className="font-monospace">{transaction}</span>
                                             </Link>
@@ -120,6 +120,15 @@ export default class BlockDisplay extends React.Component {
                                         <span className="block-display-value font-monospace">{this.props.block.parentHash}</span>
                                     </Link>
 
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label>nonce</label>
+                                </td>
+                                <td>
+                                    <span className="block-display-value font-monospace">{this.props.block.nonce}</span>
                                 </td>
                             </tr>
 
