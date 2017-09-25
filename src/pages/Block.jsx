@@ -12,6 +12,8 @@ export default class Block extends React.Component {
         this._link = this.props.linkClient;
 
         this.state = {
+            blocks : [],
+            loading : true,
             showMulti : false
         }
 
@@ -31,6 +33,7 @@ export default class Block extends React.Component {
 
                     this.setState(
                         {
+                            loading : false,
                             blockID : blockID,
                             block: block,
                             showMulti : false
@@ -54,6 +57,7 @@ export default class Block extends React.Component {
 
                     this.setState(
                         {
+                            loading : false,
                             blocks: latestBlocks,
                             showMulti : true
                         }
@@ -68,13 +72,19 @@ export default class Block extends React.Component {
 
     render() {
 
-        if(!this.state.block && !(this.state.blocks && this.state.blocks.length)){
+        if(this.state.loading){
+
+            return <div className="alert alert-info">Please wait...</div>
+
+        }
+
+        if(!this.state.loading && !this.state.block && !this.state.blocks.length){
 
             return <div className="alert alert-danger">There are no blocks to show</div>;
 
         }
 
-        if (this.state.showMulti) {
+        if (!this.state.loading && this.state.showMulti) {
 
             return <MultiBlockDisplay blocks={this.state.blocks}/>
 

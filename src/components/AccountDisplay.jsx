@@ -8,6 +8,17 @@ export default class AccountDisplay extends React.Component {
 
         super(props);
 
+        this.state = {
+            balance : 0
+        };
+
+        if(this.props.account){
+
+            this.state.balance = Number(this.props.account.balance).toFixed(4);
+
+        }
+
+
     }
 
     render() {
@@ -30,7 +41,7 @@ export default class AccountDisplay extends React.Component {
 
                         <tr>
                             <td><label>Balance</label></td>
-                            <td>{this.props.account.balance}</td>
+                            <td>{this.state.balance}</td>
                         </tr>
 
                         </tbody>
