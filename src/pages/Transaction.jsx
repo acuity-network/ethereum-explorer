@@ -79,7 +79,6 @@ export default class Transaction extends React.Component {
 
                         this.setState(
                             {
-                                loading : false,
                                 alertMessage : ''
                             }
                         );
@@ -149,6 +148,9 @@ export default class Transaction extends React.Component {
             return <TransactionDisplay transaction={this.state.transaction}/>
 
         }
+
+        // Transaction not found
+        return <div className="alert alert-danger">Transaction not found</div>
 
     }
 

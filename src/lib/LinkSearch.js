@@ -14,7 +14,7 @@ export default class LinkSearch{
         return new Promise(
             (resolve, reject)=>{
 
-                this._web3.eth.getBlock(hashOrNumber,
+                this._web3.eth.getBlock(hashOrNumber, true,
                     (error, block)=>{
 
                         if(error || !block) return resolve(null);

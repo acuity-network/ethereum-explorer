@@ -7,9 +7,15 @@ class TransactionsList extends React.Component {
 
         super(props);
 
+        console.log(this.props);
+
     }
 
     render() {
+
+        if(!this.props.transactions || !this.props.transactions.length){
+            return null;
+        }
 
         return (
 
@@ -28,8 +34,8 @@ class TransactionsList extends React.Component {
                                 (transaction, i) =>
                                     <tr key={i}>
                                         <td>
-                                            <Link to={ '/transaction/' + transaction}>
-                                                <span className="font-monospace">{transaction}</span>
+                                            <Link to={ '/transaction/' + transaction.hash}>
+                                                <span className="font-monospace">{transaction.hash}</span>
                                             </Link>
                                         </td>
                                     </tr>

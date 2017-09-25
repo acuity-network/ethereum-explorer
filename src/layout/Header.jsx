@@ -36,8 +36,6 @@ class Header extends React.Component {
         this.props.linkClient.doSearch(this.state.searchQuery).then(
             (result)=>{
 
-                console.log(result);
-
                 if(result.block){
 
                     this.props.history.push('/block/' + this.state.searchQuery);

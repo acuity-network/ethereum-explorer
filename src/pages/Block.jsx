@@ -36,7 +36,8 @@ export default class Block extends React.Component {
                         {
                             loading : false,
                             blockID : blockID,
-                            block: block
+                            block: block,
+                            blocks : []
                         }
                     );
 
@@ -57,6 +58,7 @@ export default class Block extends React.Component {
 
                     this.setState(
                         {
+                            block : null,
                             loading : false,
                             blocks: latestBlocks
                         }
