@@ -4,11 +4,19 @@ import {Link} from 'react-router-dom';
 
 export default class Navleft extends React.Component{
 
+    constructor(props){
+
+        super(props);
+
+
+
+    }
+
     render(){
 
         return (
 
-            <div className="nav-left">
+            <div className={ this.props.inline ? 'nav-left nav-left-inline' : 'nav-left' }>
 
                 <nav>
 

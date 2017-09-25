@@ -46,7 +46,7 @@ export default class App extends React.Component {
 
                     <div className="content-main">
 
-                        <Navleft></Navleft>
+                        <Navleft className="hidden-sm hidden-xs"></Navleft>
 
                         <div className="content-middle">
 
