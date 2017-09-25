@@ -2,6 +2,8 @@ import React from 'react';
 
 import {Bar, defaults as chartDefaults} from 'react-chartjs-2';
 
+import BigNumberDisplay from '../components/BigNumberDisplay.jsx';
+
 // Ethereum Explorer home page - displays system stats
 
 export default class Home extends React.Component {
@@ -229,7 +231,9 @@ export default class Home extends React.Component {
                 <div className="col-md-3 col-sm-6 col-xs-12 stats-block">
 
                     <label>Ave. difficulty</label>
-                    <span className="statValue">{this.state.systemStats.difficulty} MH</span>
+                    <span className="statValue">
+                        <BigNumberDisplay number={this.state.systemStats.difficulty} unit="H" />
+                    </span>
 
                 </div>
 
