@@ -197,7 +197,7 @@ export default class Home extends React.Component {
 
             <div ref="homeRef" className="home-page content-page">
 
-                <h3>Network stats</h3>
+                <h3 className="content-heading">Network stats</h3>
 
                 <div className="col-md-3 col-sm-6 col-xs-12 stats-block">
 

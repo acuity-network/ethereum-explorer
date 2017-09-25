@@ -106,7 +106,7 @@ export default class Account extends React.Component {
 
             return <div className="account-search">
 
-                <h3>Account search</h3>
+                <h3 className="content-heading">Account search</h3>
 
                 <div className="account-search-container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 

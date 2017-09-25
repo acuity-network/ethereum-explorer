@@ -115,7 +115,7 @@ export default class Settings extends React.Component {
 
         return <div className="settings-page">
 
-            <h3>Connection settings</h3>
+            <h3 className="content-heading">Connection settings</h3>
 
             <div className="col-md-8 col-md-offset-2">
 

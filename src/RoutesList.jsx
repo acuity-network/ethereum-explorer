@@ -2,7 +2,6 @@ import React from 'react'
 import {Route, Switch, withRouter, Link} from 'react-router-dom';
 
 import Home from './pages/Home.jsx';
-import Search from './pages/Search.jsx';
 import Block from './pages/Block.jsx';
 import Transaction from './pages/Transaction.jsx';
 import Account from './pages/Account.jsx';

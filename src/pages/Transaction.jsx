@@ -104,7 +104,7 @@ export default class Transaction extends React.Component {
 
             return <div className="transaction-search">
 
-                <h3>Transaction search</h3>
+                <h3 className="content-heading">Transaction search</h3>
 
                 <div className="transaction-search-container col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 

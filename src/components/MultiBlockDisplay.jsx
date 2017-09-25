@@ -25,7 +25,7 @@ export default class MultiBlockDisplay extends React.Component {
 
             <div className="multi-block-display">
 
-                <h3>Latest blocks information</h3>
+                <h3 className="content-heading">Latest blocks information</h3>
 
                 <div className="col-md-8 col-md-offset-2">
 

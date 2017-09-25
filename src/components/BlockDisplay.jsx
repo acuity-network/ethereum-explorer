@@ -68,7 +68,7 @@ export default class BlockDisplay extends React.Component {
 
             <div className="block-display">
 
-                <h3>Block Information</h3>
+                <h3 className="content-heading">Block Information</h3>
 
                 <div className="row">
 
