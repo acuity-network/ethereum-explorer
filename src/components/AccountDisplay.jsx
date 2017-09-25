@@ -36,7 +36,7 @@ export default class AccountDisplay extends React.Component {
 
                         <tr>
                             <td><label>Address</label></td>
-                            <td>{this.props.account.hash}</td>
+                            <td className="font-monospace">{this.props.account.hash}</td>
                         </tr>
 
                         <tr>

@@ -29,7 +29,7 @@ class TransactionsList extends React.Component {
                                     <tr key={i}>
                                         <td>
                                             <Link to={ '/transaction/' + transaction}>
-                                                {transaction}
+                                                <span className="font-monospace">{transaction}</span>
                                             </Link>
                                         </td>
                                     </tr>
@@ -88,7 +88,7 @@ export default class BlockDisplay extends React.Component {
                                     <label>hash</label>
                                 </td>
                                 <td>
-                                    <span className="block-display-value">{this.props.block.hash}</span>
+                                    <span className="block-display-value font-monospace">{this.props.block.hash}</span>
                                 </td>
                             </tr>
 
@@ -99,7 +99,7 @@ export default class BlockDisplay extends React.Component {
                                 <td>
 
                                     <Link to={'/block/' + this.props.block.parentHash}>
-                                        <span className="block-display-value">{this.props.block.parentHash}</span>
+                                        <span className="block-display-value font-monospace">{this.props.block.parentHash}</span>
                                     </Link>
 
                                 </td>
@@ -129,7 +129,7 @@ export default class BlockDisplay extends React.Component {
                                 </td>
                                 <td>
                                     <Link to={'/account/' + this.props.block.miner}>
-                                        <span className="block-display-value">{this.props.block.miner}</span>
+                                        <span className="block-display-value font-monospace">{this.props.block.miner}</span>
                                     </Link>
                                 </td>
                             </tr>

@@ -27,7 +27,7 @@ export default class TransactionDisplay extends React.Component {
                             <td colSpan="2" className="text-center">
                                 <label className="transaction-from-to-label">from</label>
                                 <Link to={'/account/' + this.props.transaction.from}>
-                                    {this.props.transaction.from}
+                                    <span className="font-monospace">{this.props.transaction.from}</span>
                                 </Link>
                             </td>
                         </tr>
@@ -36,7 +36,7 @@ export default class TransactionDisplay extends React.Component {
                             <td colSpan="2" className="text-center">
                                 <label className="transaction-from-to-label">to</label>
                                 <Link to={'/account/' + this.props.transaction.to}>
-                                    {this.props.transaction.to}
+                                    <span className="font-monospace">{this.props.transaction.to}</span>
                                 </Link>
                             </td>
                         </tr>
