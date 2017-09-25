@@ -224,7 +224,7 @@ export default class Home extends React.Component {
                 <div className="col-md-3 col-sm-6 col-xs-12 stats-block">
 
                     <label>Gas price</label>
-                    <span className="statValue">{this.state.systemStats.gasPrice} Gwei</span>
+                    <span className="statValue">{ Number(this.state.systemStats.gasPrice).toFixed(2) } Gwei</span>
 
                 </div>
 

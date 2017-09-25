@@ -12,6 +12,7 @@ export default class Block extends React.Component {
         this._link = this.props.linkClient;
 
         this.state = {
+            block : {},
             blocks : [],
             loading : true,
             showMulti : false
