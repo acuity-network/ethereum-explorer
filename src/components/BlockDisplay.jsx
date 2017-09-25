@@ -7,6 +7,20 @@ class TransactionsList extends React.Component {
 
         super(props);
 
+        // The web3 getBlock api is not reliably returning populated blocks.
+        this.transactions = this.props.transactions.map(
+            (transaction)=>{
+
+                if(typeof transaction === 'string'){
+                    return transaction;
+                }
+
+                return transaction.hash;
+
+            }
+        )
+
+
     }
 
     render() {
@@ -28,12 +42,12 @@ class TransactionsList extends React.Component {
                         <tbody>
 
                         {
-                            this.props.transactions.map(
+                            this.transactions.map(
                                 (transaction, i) =>
                                     <tr key={i}>
                                         <td>
-                                            <Link to={ '/transaction/' + transaction.hash}>
-                                                <span className="font-monospace">{transaction.hash}</span>
+                                            <Link to={ '/transaction/' + transaction}>
+                                                <span className="font-monospace">{transaction}</span>
                                             </Link>
                                         </td>
                                     </tr>
