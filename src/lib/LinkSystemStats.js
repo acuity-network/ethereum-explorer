@@ -173,7 +173,7 @@ export default class LinkSystemStats{
             }, 0);
 
         this._averageDifficulty = (this._difficultySum / this._latestBlocks.length);
-        return ( this._averageDifficulty / 1000000).toFixed(2);
+        return this._averageDifficulty;
 
     }
 
@@ -213,6 +213,7 @@ export default class LinkSystemStats{
 
                         if(error) return reject(error);
 
+                        // Price in gwei
                         resolve(parseInt(gasPrice.toString()) / 1000000000);
 
                     }
@@ -229,7 +230,7 @@ export default class LinkSystemStats{
             throw new Error('Need difficulty and block time to calculate hashrate');
         }
 
-        return ((this._difficultySum / this._totalTime) / 1000000).toFixed(2);
+        return (this._difficultySum / this._totalTime);
 
     }
 
