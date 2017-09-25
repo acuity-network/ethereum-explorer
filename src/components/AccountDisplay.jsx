@@ -26,7 +26,7 @@ export default class AccountDisplay extends React.Component {
         return (
             <div className="address-display">
 
-                <h3>Account Information</h3>
+                <h3 className="content-heading">Account Information</h3>
 
                 <div className="col-md-6 col-md-offset-3">
 

@@ -15,7 +15,7 @@ export default class TransactionDisplay extends React.Component {
         return (
             <div className="transaction-display">
 
-                <h3>Transaction Information</h3>
+                <h3 className="content-heading">Transaction Information</h3>
 
                 <div className="col-md-6 col-md-offset-3">
 
