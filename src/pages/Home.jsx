@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 import {Bar, defaults as chartDefaults} from 'react-chartjs-2';
@@ -19,13 +18,13 @@ export default class Home extends React.Component {
             scales: {
                 xAxes: [{
                     gridLines: {
-                        display:false
+                        display: false
                     }
                 }],
                 yAxes: [{
-                    display : false,
+                    display: false,
                     gridLines: {
-                        display:false
+                        display: false
                     }
                 }]
             }
@@ -49,7 +48,7 @@ export default class Home extends React.Component {
         );
 
         let difficultyChartData = {
-            labels: Array.apply(null, Array(10)).map(String.prototype.valueOf,""),
+            labels: Array.apply(null, Array(10)).map(String.prototype.valueOf, ""),
             datasets: [
                 {
                     label: 'Difficulty',
@@ -69,12 +68,12 @@ export default class Home extends React.Component {
         blockTimeChartData.datasets[0].label = 'Block time';
 
         // We only know the block times for the last 9 blocks, therefore there are only 9 labels.
-        blockTimeChartData.labels = Array.apply(null, Array(9)).map(String.prototype.valueOf,"");
+        blockTimeChartData.labels = Array.apply(null, Array(9)).map(String.prototype.valueOf, "");
         blockTimeChartData.datasets[0].data = systemStats.blockTimes.blockTimes;
 
         return {
-            difficultyChart : difficultyChartData,
-            blockTimeChart : blockTimeChartData
+            difficultyChart: difficultyChartData,
+            blockTimeChart: blockTimeChartData
         };
 
     }
@@ -85,10 +84,10 @@ export default class Home extends React.Component {
             charts = {};
 
         return new Promise(
-            (resolve, reject)=>{
+            (resolve, reject) => {
 
                 this._link.getSystemStats().then(
-                    (stats)=>{
+                    (stats) => {
 
                         systemStats = stats;
                         charts = this.getChartData(systemStats);
@@ -96,7 +95,7 @@ export default class Home extends React.Component {
                         resolve();
 
                     },
-                    (error)=>{
+                    (error) => {
 
                         reject(error);
 
@@ -108,15 +107,15 @@ export default class Home extends React.Component {
 
     }
 
-    watchNetwork(){
+    watchNetwork() {
 
         // Watch the network for new blocks. Add the new block to the list of
         // latest blocks when it's created and update the stats + UI.
-        this._link.watchNetwork(
-            (blockHash)=>{
+        this.watchFilter = this._link.watchNetwork(
+            (blockHash) => {
 
                 this._link.getBlock(blockHash).then(
-                    (newBlock)=>{
+                    (newBlock) => {
 
                         let latestBlocks = this.state.systemStats.latestBlocks;
 
@@ -128,16 +127,16 @@ export default class Home extends React.Component {
 
                     }
                 ).catch(
-                    (error)=>{
+                    (error) => {
 
                         alert(error.message);
 
                     }
                 ).then(
-                    (latestBlocks)=>{
+                    (latestBlocks) => {
 
                         this._link.updateBlocks(latestBlocks).then(
-                            (stats)=>{
+                            (stats) => {
 
                                 // Update the stats
                                 const charts = this.getChartData(stats);
@@ -151,7 +150,7 @@ export default class Home extends React.Component {
                     }
                 )
             },
-            (error)=>{
+            (error) => {
 
                 console.error(error.message);
 
@@ -166,30 +165,35 @@ export default class Home extends React.Component {
 
         // Get initial ten blocks
         this.getStats().then(
-            ()=>{
+            () => {
 
                 this.watchNetwork();
 
             }
         )
 
+    }
 
+    componentWillUnmount(){
+
+        // Stop watch when the page is changed.
+        this.watchFilter.stopWatching();
 
     }
 
     render() {
 
-        if(!this.state.systemStats){
+        if (!this.state.systemStats) {
 
             return <div className="home-page content-page">
-                        <div className="alert alert-info">Please wait...</div>
-                   </div>
+                <div className="alert alert-info">Please wait...</div>
+            </div>
 
         }
 
         return (
 
-            <div className="home-page content-page">
+            <div ref="homeRef" className="home-page content-page">
 
                 <h3>Network stats</h3>
 

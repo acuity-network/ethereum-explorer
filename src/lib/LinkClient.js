@@ -53,6 +53,8 @@ export default class LinkClient {
 
         });
 
+        return filter;
+
     }
 
     // Take a hash or number and search for:
