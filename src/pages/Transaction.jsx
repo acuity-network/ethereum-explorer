@@ -12,6 +12,7 @@ export default class Transaction extends React.Component {
         this._link = this.props.linkClient;
 
         this.state = {
+            loading : true,
             transactionID: null,
             searchQuery: ''
         };
@@ -57,6 +58,7 @@ export default class Transaction extends React.Component {
 
                 this.setState(
                     {
+                        loading : false,
                         transactionID: transactionID,
                         transaction: transaction
                     }
@@ -67,6 +69,7 @@ export default class Transaction extends React.Component {
 
                 this.setState(
                     {
+                        loading : false,
                         alertMessage : 'invalid transaction'
                     }
                 );
@@ -76,6 +79,7 @@ export default class Transaction extends React.Component {
 
                         this.setState(
                             {
+                                loading : false,
                                 alertMessage : ''
                             }
                         );
@@ -91,7 +95,13 @@ export default class Transaction extends React.Component {
 
     render() {
 
-        if (!this.state.transactionID) {
+        if(this.state.loading){
+
+            return <div className="alert alert-info">Please wait...</div>
+
+        }
+
+        if (!this.state.loading && !this.state.transactionID) {
 
             return <div className="transaction-search">
 
@@ -134,7 +144,11 @@ export default class Transaction extends React.Component {
         }
 
         // TransactionID supplied - show transaction
-        return <TransactionDisplay transaction={this.state.transaction}/>
+        if(this.state.transaction){
+
+            return <TransactionDisplay transaction={this.state.transaction}/>
+
+        }
 
     }
 

@@ -12,7 +12,7 @@ export default class Block extends React.Component {
         this._link = this.props.linkClient;
 
         this.state = {
-            block : {},
+            block : null,
             blocks : [],
             loading : true,
             showMulti : false
@@ -36,8 +36,7 @@ export default class Block extends React.Component {
                         {
                             loading : false,
                             blockID : blockID,
-                            block: block,
-                            showMulti : false
+                            block: block
                         }
                     );
 
@@ -59,8 +58,7 @@ export default class Block extends React.Component {
                     this.setState(
                         {
                             loading : false,
-                            blocks: latestBlocks,
-                            showMulti : true
+                            blocks: latestBlocks
                         }
                     );
 
@@ -85,12 +83,14 @@ export default class Block extends React.Component {
 
         }
 
-        if (!this.state.loading && this.state.showMulti) {
+        if (!this.state.loading && this.state.blocks.length) {
 
             return <MultiBlockDisplay blocks={this.state.blocks}/>
 
 
-        } else {
+        }
+
+        if(!this.state.loading && this.state.block){
 
             return <BlockDisplay block={this.state.block}/>
 
