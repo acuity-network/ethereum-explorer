@@ -8,8 +8,6 @@ export default class TransactionDisplay extends React.Component {
 
         super(props);
 
-        console.log(this.props);
-
     }
 
     render() {
