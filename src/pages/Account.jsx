@@ -47,6 +47,15 @@ export default class Account extends React.Component {
         if (!this.props.match.params || !this.props.match.params.accounthash) {
 
             // No account ID supplied. Just show the search input.
+            this.setState(
+                {
+                    loading : false,
+                    account: {
+                        hash: ''
+                    }
+                }
+            );
+
             return;
 
         }

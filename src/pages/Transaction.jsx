@@ -46,6 +46,13 @@ export default class Transaction extends React.Component {
         if (!this.props.match.params || !this.props.match.params.transactionid) {
 
             // No transaction ID supplied. Just show the search input.
+            this.setState(
+                {
+                    loading : false,
+                    transaction: ''
+                }
+            );
+
             return;
 
         }
