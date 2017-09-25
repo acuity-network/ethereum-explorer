@@ -10,6 +10,7 @@ export default class Account extends React.Component {
         this._link = this.props.linkClient;
 
         this.state = {
+            loading : true,
             searchQuery: '',
             account: {
                 hash : null,
@@ -57,6 +58,7 @@ export default class Account extends React.Component {
 
                 this.setState(
                     {
+                        loading : false,
                         account: {
                             hash: accountHash,
                             balance: balance
@@ -69,6 +71,7 @@ export default class Account extends React.Component {
 
                 this.setState(
                     {
+                        loading : false,
                         alertMessage : error.message
                     }
                 );
@@ -93,7 +96,13 @@ export default class Account extends React.Component {
 
     render() {
 
-        if (!this.state.account.hash) {
+        if(this.state.loading){
+
+            return <div className="alert alert-info">Please wait...</div>
+
+        }
+
+        if (!this.state.loading && !this.state.account.hash) {
 
             return <div className="account-search">
 
@@ -136,7 +145,11 @@ export default class Account extends React.Component {
         }
 
         // Show Account balance
-        return <AccountDisplay account={this.state.account}/>
+        if(!this.state.loading && this.state.account){
+
+            return <AccountDisplay account={this.state.account}/>
+
+        }
 
     }
 

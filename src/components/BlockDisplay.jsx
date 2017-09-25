@@ -56,8 +56,6 @@ export default class BlockDisplay extends React.Component {
 
         super(props);
 
-        console.log(this.props.block);
-
     }
 
     render() {
