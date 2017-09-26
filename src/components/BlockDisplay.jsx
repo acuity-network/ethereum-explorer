@@ -197,7 +197,7 @@ export default class BlockDisplay extends React.Component {
 
                 </div>
 
-                { this.props.block.transactions.length &&
+                { (this.props.block.transactions.length > 0) &&
                 <TransactionsList transactions={this.props.block.transactions}/> }
 
             </div>
