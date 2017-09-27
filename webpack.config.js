@@ -2,7 +2,8 @@
 
 const path = require('path'),
     webpack = require('webpack'),
-    HtmlWebpackPlugin = require('html-webpack-plugin');
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    DotenvPlugin = require('dotenv-webpack');;
 
 const config = require('./config');
 
@@ -49,7 +50,8 @@ module.exports = {
             jQuery: 'jquery',
             $: 'jquery',
             jquery: 'jquery'
-        })
+        }),
+        new DotenvPlugin({path : './.env'})
     ],
     devtool : 'source-map',
     devServer: {

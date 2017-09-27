@@ -13,6 +13,16 @@ import RoutesList from './RoutesList.jsx';
 // TODO: This path needs to be dynamic depending on environment
 import LinkClient from '../mix-api/dist/LinkClient';
 
+// This is set up but does not work as ES6 does not currently support
+// if(process.env.environment === 'dev'){
+//
+//     LinkClient = require('../mix-api/dist/LinkClient');
+//
+// }else{
+//
+//     // TODO: import node module
+//
+// }
 
 export default class App extends React.Component {
 
