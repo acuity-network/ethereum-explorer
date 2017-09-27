@@ -10,19 +10,18 @@ import Footer from './layout/Footer.jsx';
 import { BrowserRouter as Router } from 'react-router-dom';
 import RoutesList from './RoutesList.jsx';
 
-// TODO: This path needs to be dynamic depending on environment
-import LinkClient from '../mix-api/dist/LinkClient';
+let LinkClient = null;
 
-// This is set up but does not work as ES6 does not currently support
-// if(process.env.environment === 'dev'){
-//
-//     LinkClient = require('../mix-api/dist/LinkClient');
-//
-// }else{
-//
-//     // TODO: import node module
-//
-// }
+// Load mix api from the project for development, load from node_modules in production.
+// environment defined in .env file
+if(process.env.environment === 'dev'){
+
+    LinkClient = require('../mix-api/dist/LinkClient');
+
+}else{
+
+    LinkClient = require('mix-api');
+}
 
 export default class App extends React.Component {
 
@@ -35,7 +34,7 @@ export default class App extends React.Component {
         try{
 
             // The LinkClient will try various methods of connecting to a blockchain network
-            this.linkClient = new LinkClient();
+            this.linkClient = new LinkClient.default();
 
         }catch(err){
 
