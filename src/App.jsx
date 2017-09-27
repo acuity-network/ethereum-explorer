@@ -1,7 +1,7 @@
 
+const config = require('../config');
+
 import React from 'react';
-
-
 import Navleft from './layout/Navleft.jsx';
 
 import Header from './layout/Header.jsx';
@@ -9,9 +9,10 @@ import Footer from './layout/Footer.jsx';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 import RoutesList from './RoutesList.jsx';
-import LinkClient from './lib/LinkClient';
 
-const config = require('../config');
+// TODO: This path needs to be dynamic depending on environment
+import LinkClient from '../mix-api/dist/LinkClient';
+
 
 export default class App extends React.Component {
 
