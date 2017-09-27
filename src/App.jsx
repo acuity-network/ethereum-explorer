@@ -16,11 +16,11 @@ let LinkClient = null;
 // environment defined in .env file
 if(process.env.environment === 'dev'){
 
-    LinkClient = require('../mix-api/dist/LinkClient');
+    LinkClient = require('../mix-api/index.js').LinkClient;
 
 }else{
 
-    LinkClient = require('mix-api');
+    LinkClient = require('mix-api').LinkClient;
 }
 
 export default class App extends React.Component {
@@ -34,7 +34,7 @@ export default class App extends React.Component {
         try{
 
             // The LinkClient will try various methods of connecting to a blockchain network
-            this.linkClient = new LinkClient.default();
+            this.linkClient = new LinkClient();
 
         }catch(err){
 
