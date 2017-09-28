@@ -13,8 +13,8 @@ import RoutesList from './RoutesList.jsx';
 let LinkClient = null;
 
 // Load mix api from the project for development, load from node_modules in production.
-// environment defined in .env file
-if(process.env.environment === 'dev'){
+// environment variable defined in .env file
+if(process.env.api_use_dev){
 
     LinkClient = require('../mix-api/index.js').LinkClient;
 
