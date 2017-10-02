@@ -10,18 +10,7 @@ import Footer from './layout/Footer.jsx';
 import { BrowserRouter as Router } from 'react-router-dom';
 import RoutesList from './RoutesList.jsx';
 
-let LinkClient = null;
-
-// Load mix api from the project for development, load from node_modules in production.
-// environment variable defined in .env file
-if(process.env.api_use_dev){
-
-    LinkClient = require('../mix-api/index.js').LinkClient;
-
-}else{
-
-    LinkClient = require('mix-api').LinkClient;
-}
+let MixClient = require('mix-api').MixClient;
 
 export default class App extends React.Component {
 
@@ -29,12 +18,12 @@ export default class App extends React.Component {
 
         super();
 
-        this.linkClient = null;
+        this.mixClient = null;
 
         try{
 
             // The LinkClient will try various methods of connecting to a blockchain network
-            this.linkClient = new LinkClient();
+            this.mixClient = new MixClient();
 
         }catch(err){
 
@@ -52,7 +41,7 @@ export default class App extends React.Component {
 
                 <div className="site-content">
 
-                    <Header linkClient={this.linkClient}></Header>
+                    <Header linkClient={this.mixClient}></Header>
 
                     <div className="content-main">
 
@@ -60,7 +49,7 @@ export default class App extends React.Component {
 
                         <div className="content-middle">
 
-                            <RoutesList linkClient={this.linkClient}/>
+                            <RoutesList linkClient={this.mixClient}/>
                             <Footer></Footer>
 
                         </div>
