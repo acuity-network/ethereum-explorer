@@ -178,8 +178,18 @@ export default class Home extends React.Component {
 
     componentWillUnmount(){
 
-        // Stop watch when the page is changed.
-        this.watchFilter.stopWatching();
+        try{
+
+            // Stop watch when the page is changed.
+            this.watchFilter.stopWatching();
+
+        }catch(err){
+
+            // Metamask throwing errors for this at the moment
+            console.error(err.message);
+
+        }
+
 
     }
 
