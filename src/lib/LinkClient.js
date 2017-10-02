@@ -14,11 +14,11 @@ export default class LinkClient {
         this._web3 = null;
 
         // If a node URI has been specified, it will be stored in localstorage
-        const nodeUri = nodeURI || localStorage.getItem('link-node-uri');
+        const nodeURI = nodeURI || localStorage.getItem('mix-node-uri');
 
-        if (nodeUri) {
+        if (nodeURI) {
 
-            this._web3 = LinkHTTPConnector.connect(nodeUri);
+            this._web3 = LinkHTTPConnector.connect(nodeURI);
 
         // No direct connection specified. Try metamask.
         }else if( typeof web3 !== 'undefined'){

@@ -12,7 +12,7 @@ export default class Settings extends React.Component {
 
         this.state = {
             metaMaskExists : (typeof web3 !== 'undefined'),
-            nodeUri : localStorage.getItem('link-node-uri') || ''
+            nodeUri : localStorage.getItem('mix-node-uri') || ''
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -39,7 +39,7 @@ export default class Settings extends React.Component {
         // If the input is blank, the uri is being deleted
         if(!this.state.nodeUri){
 
-            localStorage.removeItem('link-node-uri');
+            localStorage.removeItem('mix-node-uri');
 
             this.setState(
                 {
@@ -90,7 +90,7 @@ export default class Settings extends React.Component {
         }
 
         // Config good. Store it and show notification.
-        localStorage.setItem('link-node-uri', this.state.nodeUri);
+        localStorage.setItem('mix-node-uri', this.state.nodeUri);
 
         this.setState(
             {
