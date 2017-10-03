@@ -41,7 +41,7 @@ export default class App extends React.Component {
 
                 <div className="site-content">
 
-                    <Header linkClient={this.mixClient}></Header>
+                    <Header mixClient={this.mixClient}></Header>
 
                     <div className="content-main">
 
@@ -49,7 +49,7 @@ export default class App extends React.Component {
 
                         <div className="content-middle">
 
-                            <RoutesList linkClient={this.mixClient}/>
+                            <RoutesList mixClient={this.mixClient}/>
                             <Footer></Footer>
 
                         </div>

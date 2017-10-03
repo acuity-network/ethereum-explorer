@@ -9,7 +9,7 @@ export default class Block extends React.Component {
 
         super(props);
 
-        this._link = this.props.linkClient;
+        this._link = this.props.mixClient;
 
         this.state = {
             block : null,

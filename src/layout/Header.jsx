@@ -33,7 +33,7 @@ class Header extends React.Component {
 
         ev.preventDefault();
 
-        this.props.linkClient.doSearch(this.state.searchQuery).then(
+        this.props.mixClient.doSearch(this.state.searchQuery).then(
             (result)=>{
 
                 if(result.block){

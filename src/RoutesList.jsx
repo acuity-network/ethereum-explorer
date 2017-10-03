@@ -11,7 +11,7 @@ export class RoutesList extends React.Component {
 
     constructor(props) {
 
-        // this.props.linkClient is supplied via App.jsx
+        // this.props.mixClient is supplied via App.jsx
         super(props);
 
 
@@ -19,7 +19,7 @@ export class RoutesList extends React.Component {
 
     render() {
 
-        if (!this.props.linkClient && this.props.location.pathname !== '/settings') {
+        if (!this.props.mixClient && this.props.location.pathname !== '/settings') {
 
             return (
                 <div className="page-content">
@@ -37,7 +37,7 @@ export class RoutesList extends React.Component {
         const BlockPage = (props) => {
             return (
                 <Block
-                    linkClient={this.props.linkClient}
+                    mixClient={this.props.mixClient}
                     {...props}
                 />
             );
@@ -46,7 +46,7 @@ export class RoutesList extends React.Component {
         const TransactionPage = (props) => {
             return (
                 <Transaction
-                    linkClient={this.props.linkClient}
+                    mixClient={this.props.mixClient}
                     {...props}
                 />
             );
@@ -55,7 +55,7 @@ export class RoutesList extends React.Component {
         const AccountPage = (props) => {
             return (
                 <Account
-                    linkClient={this.props.linkClient}
+                    mixClient={this.props.mixClient}
                     {...props}
                 />
             );
@@ -68,7 +68,7 @@ export class RoutesList extends React.Component {
 
                 <Switch>
 
-                    <Route exact path="/" render={() => <Home linkClient={this.props.linkClient}/>}/>
+                    <Route exact path="/" render={() => <Home mixClient={this.props.mixClient}/>}/>
                     <Route exact path="/block/:blockid" component={BlockPage}/>
                     <Route exact path="/block" component={BlockPage}/>
                     <Route exact path="/transaction/:transactionid" component={TransactionPage}/>

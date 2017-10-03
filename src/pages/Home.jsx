@@ -12,7 +12,7 @@ export default class Home extends React.Component {
 
         super(props);
 
-        this._link = this.props.linkClient;
+        this._link = this.props.mixClient;
 
         // Remove grid and labels on charts
         this.chartOptions = {

@@ -7,7 +7,7 @@ export default class Account extends React.Component {
 
         super(props);
 
-        this._link = this.props.linkClient;
+        this._link = this.props.mixClient;
 
         this.state = {
             loading : true,
