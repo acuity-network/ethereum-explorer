@@ -2,7 +2,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import LinkHTTPConnector from '../lib/LinkConnector.js';
+const MixHTTPConnector = require('mix-api').MixConnector;
 
 export default class Settings extends React.Component {
 
@@ -64,7 +64,7 @@ export default class Settings extends React.Component {
 
 
         // Test the connection
-        const connection = LinkHTTPConnector.connect(this.state.nodeUri);
+        const connection = MixHTTPConnector.connect(this.state.nodeUri);
 
         if(!connection.isConnected()){
 
