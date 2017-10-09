@@ -32,7 +32,7 @@
     "dotenv-webpack": "^1.5.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "mix-api": "github:link-blockchain/mix-api",
+    "mix-api": "github:mix-blockchain/mix-api",
     "react-bootstrap": "^0.31.0",
     "react-chartjs-2": "^2.1.0",
     "react-router-dom": "^4.1.1",

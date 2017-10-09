@@ -12,7 +12,7 @@ import RoutesList from './RoutesList.jsx';
 
 // let MixClient = require('mix-api').MixClient;
 
-const mixApi = require('../lib/mix-api'),
+const mixApi = require('mix-api'),
     MixClient = mixApi.MixClient;
 
 export default class App extends React.Component {
