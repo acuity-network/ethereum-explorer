@@ -10,7 +10,11 @@ import Footer from './layout/Footer.jsx';
 import { BrowserRouter as Router } from 'react-router-dom';
 import RoutesList from './RoutesList.jsx';
 
-let MixClient = require('mix-api').MixClient;
+// let MixClient = require('mix-api').MixClient;
+
+const mixApi = require('../lib/mix-api');
+
+const MixClient = mixApi.MixClient;
 
 export default class App extends React.Component {
 
