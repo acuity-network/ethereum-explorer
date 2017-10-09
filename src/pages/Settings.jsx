@@ -66,9 +66,19 @@ export default class Settings extends React.Component {
 
 
         // Test the connection
-        const connection = this.mixConnector.blockchainConnect(this.state.nodeUri);
+        let connection = null;
 
-        if(!connection.isConnected()){
+        try{
+
+            connection = this.mixConnector.blockchainConnect(this.state.nodeUri);
+
+        }catch(err){
+
+            console.error(err.message);
+
+        }
+
+        if(!connection || !connection.isConnected()){
 
             this.setState(
                 {
@@ -84,7 +94,7 @@ export default class Settings extends React.Component {
                         { configBad : false }
                     )
 
-                }, 3000
+                }, 4000
             );
 
             return;
@@ -182,6 +192,7 @@ export default class Settings extends React.Component {
 
                     <p className={ this.state.configBad ? 'alert alert-danger' : 'no-display'}>
                         Could not connect to a node with this URI. Generally this is because the URI is wrong or CORS is not enabled for this node.
+                        Please check the settings for the node and try again.
                     </p>
 
                     <div className="form-group">
