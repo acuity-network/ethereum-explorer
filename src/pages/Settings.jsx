@@ -10,6 +10,8 @@ export default class Settings extends React.Component {
 
         super();
 
+        this.mixConnector = new MixHTTPConnector();
+
         this.state = {
             metaMaskExists : (typeof web3 !== 'undefined'),
             nodeUri : localStorage.getItem('mix-node-uri') || ''
@@ -64,7 +66,7 @@ export default class Settings extends React.Component {
 
 
         // Test the connection
-        const connection = MixHTTPConnector.connect(this.state.nodeUri);
+        const connection = this.mixConnector.blockchainConnect(this.state.nodeUri);
 
         if(!connection.isConnected()){
 
