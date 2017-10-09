@@ -13,7 +13,21 @@ class Header extends React.Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.doSearch = this.doSearch.bind(this);
 
-        this.state = { searchQuery : '' };
+        this.state = { searchQuery : '', chainName : '' };
+
+    }
+
+    componentDidMount(){
+
+        this.props.mixClient.getBlockchainName().then(
+            (chainName)=>{
+
+                console.log(chainName);
+
+                this.setState({chainName: chainName});
+
+            }
+        )
 
     }
 
@@ -95,7 +109,9 @@ class Header extends React.Component {
 
                 <div className="header-block-right">
 
-                    <h1 className="link-name">Ethereum block explorer</h1>
+                    <h1 className="link-name">
+                        &nbsp;<span className={this.state.chainName ? 'chain-name' : 'no-display'}>{this.state.chainName} blockchain explorer</span>
+                    </h1>
 
                     <div className="item-search">
 
