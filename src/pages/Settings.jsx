@@ -117,7 +117,7 @@ export default class Settings extends React.Component {
                     { connectionGood : false }
                 )
 
-            }, 3000
+            }, 4000
         );
 
 
