@@ -22,8 +22,6 @@ class Header extends React.Component {
         this.props.mixClient.getBlockchainName().then(
             (chainName)=>{
 
-                console.log(chainName);
-
                 this.setState({chainName: chainName});
 
             }
